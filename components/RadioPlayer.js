@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Text, Button} from 'react-native';
-import TrackPlayer from 'react-native-track-player';
+import TrackPlayer, { State, usePlaybackState } from 'react-native-track-player';
 import { Capability } from 'react-native-track-player';
 
 const trackPlayerInit = async () => {
@@ -40,13 +40,17 @@ const RadioPlayer = () => {
             }
             startPlayer();
         }, []);
-    
-      // trackPlayerInit();
-    
+        
+      // useState for Button to control playback
       const [isPlaying, setIsPlaying] = useState(false);
+
+      // usePlaybackState event listener for playback state
+      // allows remote media controls to update Button state
+      const playerState = usePlaybackState();
+      const trueIfPlaying = playerState === State.Playing;
     
       const onButtonPressed = () => {
-        if (!isPlaying) {
+        if (!trueIfPlaying) {
           TrackPlayer.play();
           setIsPlaying(true);
         } else {
@@ -59,7 +63,7 @@ const RadioPlayer = () => {
       <>
         <Text>ehfm Live, has controller buttons now :)</Text>
         <Button
-          title={isPlaying ? "Stop" : "Play"}
+          title={trueIfPlaying ? "Stop" : "Play"}
           onPress={onButtonPressed}
         />
     
