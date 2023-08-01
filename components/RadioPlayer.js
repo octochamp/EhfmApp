@@ -61,7 +61,7 @@ const RadioPlayer = () => {
     
       return (
       <>
-        <Text>ehfm Live, has controller buttons now :)</Text>
+        <Text>ehfm functional prototype app</Text>
         <Button
           title={trueIfPlaying ? "Stop" : "Play"}
           onPress={onButtonPressed}
