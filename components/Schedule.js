@@ -2,11 +2,9 @@ import React from 'react';
 import { Text } from 'react-native';
 import useCurrentShowData from "../hooks/useCurrentShowData";
 import useNextShowData from "../hooks/useNextShowData";
-import { formatReadableTime } from '../helpers';
+import { formatReadableTime } from '../helpers/helpers';
 
 const Schedule = () => {
-
-    // TODO: Check if these update when shows change over or if they need an event listener?
 
     // get show data from useCurrentShowData() and useNextShowData()
     const currentShowData = useCurrentShowData();
@@ -34,8 +32,6 @@ const Schedule = () => {
     const checkedCurrentShowData = checkCurrentShowData();
     const checkedNextShowData = checkNextShowData();
     
-    //console.log(currentShowData);
-
     return (
         <>
         <Text>On now: {checkedCurrentShowData['name']} </Text>
