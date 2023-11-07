@@ -37,14 +37,19 @@ export const sanitiseString = (string) => {
   return andNoCommas;
 };
 
-export const getShowInPrismic = ({ residentsData, currentShow }) => {
-  if (!currentShow || !residentsData) return SHOW_NOT_FOUND;
+export const getShowInPrismic = ({ residentsData, currentShowData }) => {
+  if (!currentShowData) {console.log("helpers.js // getShowInPrismic() // currentShowData is empty")};
+  if (!residentsData) {console.log("helpers.js // getShowInPrismic() // residentsData is empty")};
+  if (!currentShowData || !residentsData) {
+    return SHOW_NOT_FOUND
+  };
   let toLowerCase;
-  const currentShowName = parseShowName(currentShow);
-  if (currentShowName) {
-    toLowerCase = currentShowName.toLowerCase();
+  const currentShowDataName = parseShowName(currentShowData);
+  if (currentShowDataName) {
+    toLowerCase = currentShowDataName.toLowerCase();
   }
   if (residentsData.length > 0 && toLowerCase) {
+    console.log("residentsData.length is > 0");
     const filtered = residentsData.filter((resident) => {
       if (toLowerCase.includes("lunch")) {
         return toLowerCase === resident.data.show_title.toLowerCase();
@@ -52,17 +57,19 @@ export const getShowInPrismic = ({ residentsData, currentShow }) => {
       return toLowerCase.includes(resident.data.show_title.toLowerCase());
     });
     if (filtered.length > 0) {
+      console.log("filtered[0]: ", filtered[0]);
       return filtered[0];
     } else {
+      console.log("filtered[0] is shorter than 1");
       return SHOW_NOT_FOUND;
     }
   }
 };
 
-export const parseShowName = (currentShow) => {
+export const parseShowName = (currentShowData) => {
   let parsedShowName = null;
-  if (currentShow !== null) {
-    parsedShowName = currentShow.name;
+  if (currentShowData !== null) {
+    parsedShowName = currentShowData.name;
     parsedShowName = sanitiseString(parsedShowName);
   }
   return parsedShowName;

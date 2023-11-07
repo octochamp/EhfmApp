@@ -13,6 +13,14 @@ const App = () => {
   const nextShowData = useNextShowData();
   const { aboutPageData, supportPageData, residentsData, carouselData } =
     usePrismicData();
+  
+  console.log("currentShowData: ", currentShowData)
+  if (residentsData) {
+    console.log ("### residentsData found from Prismic")
+  } else {
+    console.log("### no residentsData found from Prismic")
+  }
+
   return (
     <>
       <RadioPlayer />

@@ -12,51 +12,27 @@ export const usePrismic = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await client.get({
-          filters: prismic.filter.at("document.type", "about"),
-          pageSize: 1,
-        }).then((response) => {
-          response && setAboutData(response.results[0]);
-        });
+        const aboutResponse = await client.getByType('about', { pageSize: 1 });
+        setAboutData(aboutResponse.results[0] || null);
 
-        await client.get({
-          filters: prismic.filter.at("document.type", "support"),
-          pageSize: 1,
-        }).then((response) => {
-          response && setSupportData(response.results[0]);
-        });
+        const supportResponse = await client.getByType('support', { pageSize: 1 });
+        setSupportData(supportResponse.results[0] || null);
 
-        // For sorting, refer to the updated syntax for 'orderings' in the documentation
-        await client.get({
-          filters: prismic.filter.at("document.type", "show"),
+        const residentsResponse = await client.getByType('show', {
           pageSize: 200,
-          orderings: [{ field: "my.show.show_title", direction: "asc" }],
-        }).then(async (response) => {
-          if (response) {
-            let results = response.results;
-            if (response.next_page) {
-              results = await fetchAllPages(response.next_page, results);
-            }
-            setResidentsData(results);
-          } else {
-            setResidentsData([]);
-          }
+          orderings: "my.show.show_title"
         });
+        setResidentsData(residentsResponse.results || []);
 
-        await client.get({
-          filters: prismic.filter.at("document.type", "home_feature"),
+        const homeFeatureResponse = await client.getByType('home_feature', {
           pageSize: 100,
-          orderings: [{ field: "my.home_feature.order", direction: "asc" }], // Assuming 'order' is the correct field
-        }).then((response) => {
-          response && setAllCarouselItems(response.results);
+          orderings: "my.home_feature.order"
         });
+        setAllCarouselItems(homeFeatureResponse.results || []);
 
-        await client.get({
-          filters: prismic.filter.at("document.type", "home_carousel"),
-          pageSize: 100,
-        }).then((response) => {
-          response && setAdditionalCarousels(response.results);
-        });
+        const homeCarouselResponse = await client.getByType('home_carousel', { pageSize: 100 });
+        setAdditionalCarousels(homeCarouselResponse.results || []);
+
       } catch (err) {
         console.error("fetchData err", err);
       }
