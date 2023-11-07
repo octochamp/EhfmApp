@@ -10,10 +10,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@prismicio/client": "^7.3.1",
+    "@prismicio/react": "^2.7.3",
     "react": "18.2.0",
     "react-native": "0.72.3",
     "react-native-swift": "^1.2.3",
-    "react-native-track-player": "^3.2.0"
+    "react-native-track-player": "^3.2.0",
+    "react-native-url-polyfill": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
