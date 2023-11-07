@@ -9,7 +9,6 @@ import {name as appName} from './app.json';
 import { PrismicProvider } from '@prismicio/react';
 import { client } from './components/prismic';
 import 'react-native-url-polyfill/auto';
-
 import TrackPlayer from 'react-native-track-player';
 
 const AppWithPrismicProvider = () => (
