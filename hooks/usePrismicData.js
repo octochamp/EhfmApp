@@ -18,11 +18,37 @@ export const usePrismic = () => {
         const supportResponse = await client.getByType('support', { pageSize: 1 });
         setSupportData(supportResponse.results[0] || null);
 
-        const residentsResponse = await client.getByType('show', {
-          pageSize: 200,
-          orderings: "my.show.show_title"
-        });
-        setResidentsData(residentsResponse.results || []);
+        // old fetch that only brought in the first 100 results (the Prismic API limit)
+        /*         const residentsResponse = await client.getByType('show', {
+                  pageSize: 100,
+                  orderings: "my.show.show_title"
+                  
+                  setResidentsData(residentsResponse.results || []);
+                }); */
+
+        // new fetch which gets all pages and concatenates the data
+        let allResidents = [];
+        let currentPage = 1;
+        let totalPages = 1; // Assume there's at least one page to fetch initially
+
+        do {
+          const residentsResponse = await client.getByType('show', {
+            page: currentPage,
+            pageSize: 100,
+            orderings: "my.show.show_title"
+          }); 
+
+          // Add the results from the current page to the allResidents array
+          allResidents = allResidents.concat(residentsResponse.results);
+
+          // Update the total number of pages and current page
+          totalPages = residentsResponse.total_pages;
+          currentPage++;
+
+        } while (currentPage <= totalPages);
+
+        // Once all pages are fetched, update the state
+        setResidentsData(allResidents);
 
         const homeFeatureResponse = await client.getByType('home_feature', {
           pageSize: 100,

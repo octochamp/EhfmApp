@@ -35,6 +35,7 @@ const ShowImage = ({currentShowData, residentsData}) => {
         if (prismicShowImgUrl()) {
           return (
             <View style={styles.container}>
+              <Text>{ prismicShowImgUrl() }</Text>
             <Image
               style={styles.logo}
               source={{ uri: prismicShowImgUrl() }}
@@ -54,6 +55,7 @@ const ShowImage = ({currentShowData, residentsData}) => {
         } else {
           return (
             <View style={styles.container}>
+              <Text>Placeholder image</Text>
             <Image
               style={styles.logo}
               source={PlaceHolderImage} //Placeholder local image
