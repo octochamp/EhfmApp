@@ -26,7 +26,7 @@ const Header = () => {
                 <SvgXml
                     xml={MenuButton}
                     height="50%"
-                    width="50%"
+                    width="40%"
                     viewBox="0 0 273 273"
                 />
             </View>

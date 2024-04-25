@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     },
     overlayTint: {
         flex: 1,
-        backgroundColor: 'rgba(0,179,152,0.8)',
+        backgroundColor: 'rgba(0,179,152,0.7)',
     },
     header: {
         width: '100%',
@@ -32,5 +32,6 @@ export const styles = StyleSheet.create({
     bodyText: {
         color: 'rgba(255,255,255,1)',
         fontSize: 18,
+        padding: 15,
     }
 })
