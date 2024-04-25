@@ -21,7 +21,7 @@ const Header = () => {
         </svg>
     `;
     return (
-        <View style={styles.header}>
+        <View style={styles.headerContainer}>
             <View style={styles.menuButton} >
                 <SvgXml
                     xml={MenuButton}

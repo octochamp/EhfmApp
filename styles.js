@@ -12,9 +12,19 @@ export const styles = StyleSheet.create({
     },
     overlayTint: {
         flex: 1,
-        backgroundColor: 'rgba(0,179,152,0.7)',
+        backgroundColor: 'rgba(0,179,152,0.8)',
+    },
+    container: {
+        flex: 1,
+        justifyContent: 'space-between',
     },
     header: {
+
+    },
+    footer: {
+
+    },
+    headerContainer: {
         width: '100%',
         height: '20%',
         padding: 10,
