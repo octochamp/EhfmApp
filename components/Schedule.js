@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { formatReadableTime } from '../helpers';
+import { styles } from '../styles';
 /* import useCurrentShowData from "../hooks/useCurrentShowData";
 import useNextShowData from "../hooks/useNextShowData"; */
 
@@ -38,8 +39,8 @@ const Schedule = ({currentShowData, nextShowData}) => {
 
     return (
         <>
-        <Text>On now: {checkedCurrentShowData['name']} </Text>
-        <Text>Up next: {checkedNextShowData['name']} at {formatReadableTime(checkedNextShowData['starts'])} </Text>
+        <Text style={ styles.bodyText }>On now: {checkedCurrentShowData['name']} </Text>
+        <Text style={ styles.bodyText }>Up next: {checkedNextShowData['name']} at {formatReadableTime(checkedNextShowData['starts'])} </Text>
         <Text></Text>
         </>
     )

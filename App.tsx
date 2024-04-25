@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {Text, Button} from 'react-native';
-import useCurrentShowData from './hooks/useCurrentShowData';
-import useNextShowData from './hooks/useNextShowData';
-import RadioPlayer from './components/RadioPlayer';
-import Schedule from './components/Schedule';
+import React, { useEffect, useState } from 'react';
+import { Text, Button, View } from 'react-native';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Overlay from './components/Overlay';
 import ShowImage from './components/ShowImage';
 import usePrismicData from './hooks/usePrismicData';
+import useCurrentShowData from './hooks/useCurrentShowData';
+import useNextShowData from './hooks/useNextShowData';
+import { styles } from './styles';
+
 
 const App = () => {
   // get show data from useCurrentShowData() and useNextShowData()
@@ -13,25 +16,22 @@ const App = () => {
   const nextShowData = useNextShowData();
   const { aboutPageData, supportPageData, residentsData, carouselData } =
     usePrismicData();
-  
+
   console.log("currentShowData: ", currentShowData)
   if (residentsData) {
-    console.log ("### residentsData found from Prismic")
+    console.log("### residentsData found from Prismic")
   } else {
     console.log("### no residentsData found from Prismic")
   }
 
   return (
     <>
-      <RadioPlayer />
-      <Schedule
-        currentShowData={currentShowData}
-        nextShowData={nextShowData}
-      />
-      <ShowImage
-        currentShowData={currentShowData}
-        residentsData={residentsData}
-      />
+      <ShowImage currentShowData={currentShowData} residentsData={residentsData} >
+        <Overlay>
+          <Header />
+          <Footer />
+        </Overlay>
+      </ShowImage>
     </>
   )
 };
