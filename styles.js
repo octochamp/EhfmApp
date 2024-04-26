@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import RadioPlayer from "./components/RadioPlayer";
 
 export const styles = StyleSheet.create({
     backgroundImageContainer: {
@@ -12,16 +13,18 @@ export const styles = StyleSheet.create({
     },
     overlayTint: {
         flex: 1,
-        backgroundColor: 'rgba(0,179,152,0.8)',
+        backgroundColor: 'rgba(0,179,152,0)',
+    },
+    overlayGradient: {
+        flex: 1,
+        backgroundColor: 'transparent',
     },
     container: {
         flex: 1,
         justifyContent: 'space-between',
     },
-    header: {
 
-    },
-    footer: {
+    header: {
 
     },
     headerContainer: {
@@ -30,7 +33,6 @@ export const styles = StyleSheet.create({
         padding: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        // justifyContent: 'flex-start',
     },
     menuButton: {
         flex: 1,
@@ -39,9 +41,46 @@ export const styles = StyleSheet.create({
     logo: {
         flexGrow: 2,
     },
+
+    footer: {
+
+    },
+    footerContainer: {
+        // backgroundColor: 'rgba(255,255,255,0.3',
+        padding: 20,
+        flexDirection: 'row-reverse',
+        // justifyContent: 'flex-end',
+        alignItems: 'flex-start',
+    },
+
+    radioPlayer: {
+        maxHeight: '50%',
+        width: '33%',
+    },
+    playerButton: {
+        // height: '100%',
+        // width: '100%',
+    },
+
+    schedule: {
+        flexDirection: 'column-reverse',
+        flexGrow: 1,
+        height: '100%',
+    },
+
     bodyText: {
         color: 'rgba(255,255,255,1)',
         fontSize: 18,
-        padding: 15,
-    }
+        // padding: 15,
+    },
+    timeText: {
+        color: 'rgba(255,255,255,1)',
+        fontWeight: '200',
+        fontSize: 36,
+    },
+    showTitleText: {
+        color: 'rgba(255,255,255,1)',
+        fontWeight: '800',
+        fontSize: 24,
+    },
 })

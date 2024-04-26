@@ -21,7 +21,7 @@ const Header = () => {
         </svg>
     `;
     return (
-        <View style={styles.headerContainer}>
+        <>
             <View style={styles.menuButton} >
                 <SvgXml
                     xml={MenuButton}
@@ -41,7 +41,7 @@ const Header = () => {
             <View style={styles.menuButton} >
 
             </View>
-        </View>
+        </>
     );
 };
 

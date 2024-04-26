@@ -29,8 +29,12 @@ const App = () => {
       <ShowImage currentShowData={currentShowData} residentsData={residentsData} >
         <Overlay>
           <View style={styles.container}>
-            <Header />
-            <Footer />
+            <View style={styles.headerContainer}>
+              <Header />
+            </View>
+            <View style={styles.footerContainer}>
+              <Footer />
+            </View>
           </View>
         </Overlay>
       </ShowImage>

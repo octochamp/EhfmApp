@@ -14,10 +14,14 @@ const Footer = () => {
     const { aboutPageData, supportPageData, residentsData, carouselData } =
         usePrismicData();
     return (
-        <View style={styles.footer}>
-            <RadioPlayer />
-            <Schedule currentShowData={currentShowData} nextShowData={nextShowData} />
-        </View>
+        <>
+            <View style={styles.radioPlayer}>
+                <RadioPlayer />
+            </View>
+            <View style={styles.schedule}>
+                <Schedule currentShowData={currentShowData} nextShowData={nextShowData} />
+            </View>
+        </>
     );
 };
 
