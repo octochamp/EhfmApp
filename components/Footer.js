@@ -1,5 +1,6 @@
 import RadioPlayer from './RadioPlayer';
-import Schedule from './Schedule';
+import ScheduleNow from './ScheduleNow'; 4
+import ScheduleNext from './ScheduleNext';
 import useCurrentShowData from '../hooks/useCurrentShowData';
 import useNextShowData from '../hooks/useNextShowData';
 import usePrismicData from '../hooks/usePrismicData';
@@ -15,11 +16,16 @@ const Footer = () => {
         usePrismicData();
     return (
         <>
-            <View style={styles.radioPlayer}>
-                <RadioPlayer />
+            <View style={styles.playingNext}>
+                <ScheduleNext currentShowData={currentShowData} nextShowData={nextShowData} />
             </View>
-            <View style={styles.schedule}>
-                <Schedule currentShowData={currentShowData} nextShowData={nextShowData} />
+            <View style={styles.playingNow}>
+                <View style={styles.playingNowSchedule}>
+                    <ScheduleNow currentShowData={currentShowData} nextShowData={nextShowData} />
+                </View>
+                <View style={styles.radioPlayer}>
+                    <RadioPlayer />
+                </View>
             </View>
         </>
     );

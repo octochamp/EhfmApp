@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import RadioPlayer from "./components/RadioPlayer";
 
 export const styles = StyleSheet.create({
     backgroundImageContainer: {
@@ -21,51 +20,70 @@ export const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        justifyContent: 'space-between',
+        // padding: '5%',
     },
 
     header: {
 
     },
     headerContainer: {
-        width: '100%',
-        height: '20%',
-        padding: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    menuButton: {
         flex: 1,
-        paddingLeft: 15,
+        flexDirection: 'row',
+        paddingLeft: '5%',
+        paddingRight: '5%',
+        paddingTop: '1%',
     },
-    logo: {
-        flexGrow: 2,
+    menuButtonContainer: {
+        flex: 2,
+    },
+    logoContainer: {
+        flex: 3,
+        alignItems: 'center',
     },
 
     footer: {
 
     },
     footerContainer: {
-        // backgroundColor: 'rgba(255,255,255,0.3',
-        padding: 20,
-        flexDirection: 'row-reverse',
+        flex: 1,
+        flexGrow: 1,
+        flexDirection: 'column-reverse',
         // justifyContent: 'flex-end',
-        alignItems: 'flex-start',
+        rowGap: 10,
+        paddingLeft: '5%',
+        paddingRight: '5%',
+        paddingBottom: '4%',
     },
 
+    playingNow: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        flexGrow: 1,
+        flex: 1,
+    },
+    playingNext: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        columnGap: 5,
+        // flex: 1,
+        // flexShrink: 1,
+        flexWrap: 'wrap',
+    },
+    playingNowSchedule: {
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        gap: 5,
+        flex: 2,
+    },
     radioPlayer: {
-        maxHeight: '50%',
-        width: '33%',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        flex: 1,
     },
     playerButton: {
-        // height: '100%',
-        // width: '100%',
-    },
-
-    schedule: {
-        flexDirection: 'column-reverse',
-        flexGrow: 1,
-        height: '100%',
+        width: '80%',
+        maxHeight: 120,
     },
 
     bodyText: {
@@ -73,14 +91,24 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         // padding: 15,
     },
-    timeText: {
+    nowTimeText: {
         color: 'rgba(255,255,255,1)',
         fontWeight: '200',
-        fontSize: 36,
+        fontSize: 32,
     },
-    showTitleText: {
+    nowTitleText: {
         color: 'rgba(255,255,255,1)',
         fontWeight: '800',
-        fontSize: 24,
+        fontSize: 32,
+    },
+    nextTimeText: {
+        color: 'rgba(255,255,255,1)',
+        fontWeight: '200',
+        fontSize: 20,
+    },
+    nextTitleText: {
+        color: 'rgba(255,255,255,1)',
+        fontWeight: '800',
+        fontSize: 20,
     },
 })

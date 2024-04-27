@@ -5,6 +5,7 @@ export function formatReadableTime(dateString) {
 
   let period = 'am';
   let formattedHour = hour;
+  let formattedTime = "";
 
   // Convert to 12-hour format
   if (hour >= 12) {
@@ -19,9 +20,17 @@ export function formatReadableTime(dateString) {
   const formattedMinute = minute.toString().padStart(2, '0');
 
   if (formattedMinute != 0) {
-    return `${formattedHour}.${formattedMinute}${period}`;
+    formattedTime = `${formattedHour}.${formattedMinute}${period}`;
+    return formattedTime;
   } else {
-    return `${formattedHour}${period}`;
+    formattedTime = `${formattedHour}${period}`;
+    if (formattedTime === '0am') {
+      return 'Midnight';
+    } else if (formattedTime === '0pm') {
+      return 'Midday';
+    } else {
+      return formattedTime;
+    }
   }
 }
 

@@ -22,24 +22,23 @@ const Header = () => {
     `;
     return (
         <>
-            <View style={styles.menuButton} >
+            <View style={styles.menuButtonContainer} >
                 <SvgXml
                     xml={MenuButton}
-                    height="50%"
-                    width="40%"
+                    height="150"
+                    width="33"
                     viewBox="0 0 273 273"
                 />
             </View>
-            <View style={styles.logo}>
+            <View style={styles.logoContainer}>
                 <SvgXml
                     xml={EhfmLogo}
-                    height="100%"
-                    width="100%"
+                    height="150"
+                    width="150"
                     viewBox="0 0 529 273"
                 />
             </View>
-            <View style={styles.menuButton} >
-
+            <View style={styles.menuButtonContainer} >
             </View>
         </>
     );
