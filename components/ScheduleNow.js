@@ -59,7 +59,8 @@ const ScheduleNow = ({ currentShowData, nextShowData, residentsData }) => {
 
     // check if the show is listed as a repeat. if it is, then reformat the (R) at the end of the title into something more elegant
     if (checkedCurrentShowData['name'].slice(-3) === '(R)') {
-        const currentShowNameNoR = checkedCurrentShowData['name'].slice(0, -3);
+        const checkedCurrentShowDataNameApostropheFix = checkedCurrentShowData['name'].replace(/&#039;/g, "'");
+        const currentShowNameNoR = checkedCurrentShowDataNameApostropheFix.slice(0, -3);
         return (
             <>
                 <Text style={[styles.nowText, styles.nowTimeText]}>{formatReadableTime(checkedCurrentShowData['starts'])}</Text>
@@ -71,7 +72,7 @@ const ScheduleNow = ({ currentShowData, nextShowData, residentsData }) => {
         return (
             <>
                 <Text style={[styles.nowText, styles.nowTimeText]}>{formatReadableTime(checkedCurrentShowData['starts'])}</Text>
-                <Text style={[styles.nowText, styles.nowTitleText]} numberOfLines={5}>{checkedCurrentShowData['name']} </Text>
+                <Text style={[styles.nowText, styles.nowTitleText]} numberOfLines={5}>{checkedCurrentShowData['name'].replace(/&#039;/g, "'")} </Text>
                 <Text style={[styles.nowText, styles.nowDescriptionText]}>{currentShowDescription}</Text>
             </>
         )

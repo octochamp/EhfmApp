@@ -29,7 +29,8 @@ const ScheduleNext = ({ currentShowData, nextShowData, residentsData }) => {
 
     // check if the show is listed as a repeat. if it is, then reformat the (R) at the end of the title into something more elegant
     if (checkedNextShowData['name'].slice(-3) === '(R)') {
-        const nextShowNameNoR = checkedNextShowData['name'].slice(0, -3);
+        const checkedNextShowDataNameApostropheFix = checkedNextShowData['name'].replace(/&#039;/g, "'");
+        const nextShowNameNoR = checkedNextShowDataNameApostropheFix.slice(0, -3);
         return (
             <>
                 <Text style={[styles.nextText, styles.nextTimeText]} adjustsFontSizeToFit={true}>{formatReadableTime(checkedNextShowData['starts'])}</Text>
@@ -40,7 +41,8 @@ const ScheduleNext = ({ currentShowData, nextShowData, residentsData }) => {
         return (
             <>
                 <Text style={[styles.nextText, styles.nextTimeText]} adjustsFontSizeToFit={true}>{formatReadableTime(checkedNextShowData['starts'])}</Text>
-                <Text style={[styles.nextText, styles.nextTitleText]} adjustsFontSizeToFit={true}>{checkedNextShowData['name']}</Text>
+                {/* the replace code below fixes an issue with misrendering apostrophe characters */}
+                <Text style={[styles.nextText, styles.nextTitleText]} adjustsFontSizeToFit={true}>{checkedNextShowData['name'].replace(/&#039;/g, "'")}</Text>
             </>
 
         )

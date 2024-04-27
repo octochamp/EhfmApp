@@ -1,9 +1,10 @@
-import { View, Image, ImageBackground, Text } from 'react-native';
+import { View, Image, ImageBackground, Text, Pressable } from 'react-native';
 import Svg, { Rect, Circle } from 'react-native-svg';
 import { SvgXml } from 'react-native-svg';
 import { styles } from "../styles";
+import { useState } from 'react';
 
-const Header = () => {
+const Header = ({menuVisibile, setMenuVisibility}) => {
     const EhfmLogo = `
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" baseProfile="tiny" version="1.2">
         <path id="e" d="M116.1,119.4c2-1,4.6-1.6,7.8-1.6,4.7,0,8.3,1.3,10.5,3.7,1.6,1.7,2.9,4.1,3.8,7,.5,1.6-.7,3.3-2.4,3.3h-24.9c-1.6,0-2.8-1.6-2.4-3.1,0-.2,0-.3,0-.5.5-1.7,1.4-3.3,2.6-4.9,1.2-1.5,2.9-2.8,4.9-3.9M153.8,114.3c-3.2-4.3-7.2-7.8-12.1-10.3-4.9-2.5-10.7-3.8-17.2-3.8s-11.3,1.1-16.1,3.1c-4.8,2.1-9,5-12.5,8.6s-6.2,8-8.1,13-2.8,10.4-2.8,16.1.9,11.4,2.8,16.4c1.8,5,4.5,9.3,7.9,12.9,3.4,3.6,7.6,6.4,12.5,8.3,4.9,1.9,10.4,2.9,16.4,2.9,8.7,0,16.3-2,22.4-6,6.2-4,10.9-10.7,13.8-19.9l.4-1.4h-20.4l-.2.8c-.6,2.1-2.3,4.1-5.1,6.1s-6.3,3-10.2,3-9.8-1.4-12.7-4.2c-2.3-2.2-3.7-5.5-4.4-9.9-.2-1.5.9-2.9,2.5-2.9h51.5v-1c.5-5.9,0-11.7-1.4-17.1-1.4-5.5-3.7-10.4-6.8-14.6" fill="#fff" fill-rule="evenodd" stroke-width="0"/>
@@ -23,12 +24,14 @@ const Header = () => {
     return (
         <>
             <View style={styles.menuButtonContainer} >
+                <Pressable onPress={() => setMenuVisibility(!menuVisibile)}>
                 <SvgXml
                     xml={MenuButton}
                     height="150"
                     width="33"
                     viewBox="0 0 273 273"
                 />
+                </Pressable>
             </View>
             <View style={styles.logoContainer}>
                 <SvgXml

@@ -67,17 +67,42 @@ const chooseButton = (playing) => {
 }
 
 const RadioPlayer = () => {
-  // Maybe/maybe not working? Code to disable play button before initialisation from https://therohanbhatia.com/blog/music-player-app-using-react-native-hooks/
-  const [isTrackPlayerInit, setIsTrackPlayerInit] = useState(false);
-
-  //initialize the TrackPlayer when the App component is mounted
-  useEffect(() => {
+  // DEPRECATED BELOW: it used to initialize the TrackPlayer when the App component is mounted, but
+  // it was calling more than once (every time the app rendered?) and trying to re-initialise. It
+  // functioned but threw a warning each time. Now, instead, the player is initialised in App.tsx instead.
+  // Leaving this here in case there was a reason for it to be done this way in the first place
+/*   useEffect(() => {
     const startPlayer = async () => {
-      let isInit = await trackPlayerInit();
-      setIsTrackPlayerInit(isInit);
-    }
+      try {
+        await TrackPlayer.setupPlayer();
+
+        await TrackPlayer.add({
+          id: '1',
+          url: 'https://ehfm.out.airtime.pro/ehfm_a',
+          title: 'live',
+          album: 'ehfm',
+          artist: 'ehfm',
+          artwork: 'https://picsum.photos/100',
+          isLiveStream: true,
+        });
+
+        await TrackPlayer.updateOptions({
+          capabilities: [
+            TrackPlayer.CAPABILITY_PLAY,
+            TrackPlayer.CAPABILITY_PAUSE,
+          ],
+          compactCapabilities: [
+            TrackPlayer.CAPABILITY_PLAY,
+            TrackPlayer.CAPABILITY_PAUSE,
+          ],
+        });
+      } catch (error) {
+        console.log('Error initializing the track player', error);
+      }
+    };
+
     startPlayer();
-  }, []);
+  }, []); */
 
   // useState for Button to control playback
   const [isPlaying, setIsPlaying] = useState(false);
@@ -107,3 +132,4 @@ const RadioPlayer = () => {
 }
 
 export default RadioPlayer;
+export { trackPlayerInit };

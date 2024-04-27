@@ -22,18 +22,15 @@ export const styles = StyleSheet.create({
         flex: 1,
         // padding: '5%',
     },
-    headerContainer: {
+    headerMenuContainer: {
         flex: 1,
+    },
+    header: {
+        // flex: 1,
         flexDirection: 'row',
         paddingLeft: '5%',
         paddingRight: '5%',
         paddingTop: '1%',
-    },
-    menuOverlay: {
-        position: 'absolute',
-        backgroundColor: 'rgba(135,47,143,0.5)',
-        width: '100%',
-        height: '100%',
     },
     menuButtonContainer: {
         flex: 2,
@@ -42,6 +39,27 @@ export const styles = StyleSheet.create({
         flex: 3,
         alignItems: 'center',
     },
+    menuOverlay: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+    },
+    menu: {
+        flex: 1,
+        flexGrow: 1,
+        justifyContent: 'space-around',
+        flexWrap: 'wrap',
+        paddingLeft: '5%',
+        gap: 10,
+    },
+    menuItem: {
+        // flex: 1,
+        fontSize: 18,
+        fontWeight: '400',
+        color: 'rgba(255,255,255,1)',
+    },
+
+
     footerContainer: {
         flex: 1,
         flexGrow: 1,
@@ -95,7 +113,7 @@ export const styles = StyleSheet.create({
         fontSize: 32,
     },
     nowTimeText: {
-        fontWeight: '200',   
+        fontWeight: '200',
     },
     nowTitleText: {
         fontWeight: '800',
