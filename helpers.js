@@ -24,10 +24,8 @@ export function formatReadableTime(dateString) {
     return formattedTime;
   } else {
     formattedTime = `${formattedHour}${period}`;
-    if (formattedTime === '0am') {
-      return 'Midnight';
-    } else if (formattedTime === '0pm') {
-      return 'Midday';
+    if (formattedTime === '0am') { //midnight defaults to 0am, so this fixes it to say 12am
+      return '12am';
     } else {
       return formattedTime;
     }
@@ -54,25 +52,25 @@ export const getShowInPrismic = ({ residentsData, currentShowData }) => {
   };
   let toLowerCase;
   const currentShowDataName = parseShowName(currentShowData);
-  console.log("helpers.js // getShowInPrismic() // currentShowDataName: ", currentShowDataName);
+  // console.log("helpers.js // getShowInPrismic() // currentShowDataName: ", currentShowDataName);
   if (currentShowDataName) {
     toLowerCase = currentShowDataName.toLowerCase();
-    console.log("helpers.js // getShowInPrismic() // toLowerCase: ", toLowerCase);
+    // console.log("helpers.js // getShowInPrismic() // toLowerCase: ", toLowerCase);
   }
   if (residentsData.length > 0 && toLowerCase) {
-    console.log("helpers.js // getShowInPrismic() // residentsData.length is > 0.");
+    // console.log("helpers.js // getShowInPrismic() // residentsData.length is > 0.");
 
     const filtered = residentsData.filter((resident) => {
       if (toLowerCase.includes("lunch")) {
         return toLowerCase === resident.data.show_title.toLowerCase();
       }
-      console.log("helpers.js // getShowInPrismic() // (resident.data.show_title.toLowerCase()): ", resident.data.show_title.toLowerCase());
+      // console.log("helpers.js // getShowInPrismic() // (resident.data.show_title.toLowerCase()): ", resident.data.show_title.toLowerCase());
       return toLowerCase.includes(resident.data.show_title.toLowerCase());
     });
-    console.log("helpers.js // getShowInPrismic() // filtered: ", filtered);
+    // console.log("helpers.js // getShowInPrismic() // filtered: ", filtered);
 
     if (filtered.length > 0) {
-      console.log("helpers.js // getShowInPrismic() // filtered[0]: ", filtered[0]);
+      // console.log("helpers.js // getShowInPrismic() // filtered[0]: ", filtered[0]);
       return filtered[0];
     } else {
       console.log("helpers.js // getShowInPrismic() // filtered[0] is shorter than 1");

@@ -22,10 +22,6 @@ export const styles = StyleSheet.create({
         flex: 1,
         // padding: '5%',
     },
-
-    header: {
-
-    },
     headerContainer: {
         flex: 1,
         flexDirection: 'row',
@@ -33,16 +29,18 @@ export const styles = StyleSheet.create({
         paddingRight: '5%',
         paddingTop: '1%',
     },
+    menuOverlay: {
+        position: 'absolute',
+        backgroundColor: 'rgba(135,47,143,0.5)',
+        width: '100%',
+        height: '100%',
+    },
     menuButtonContainer: {
         flex: 2,
     },
     logoContainer: {
         flex: 3,
         alignItems: 'center',
-    },
-
-    footer: {
-
     },
     footerContainer: {
         flex: 1,
@@ -60,10 +58,12 @@ export const styles = StyleSheet.create({
         alignItems: 'flex-end',
         flexGrow: 1,
         flex: 1,
+        // columnGap: 5,
     },
     playingNext: {
         flexDirection: 'row',
         alignItems: 'flex-end',
+        // justifyContent: 'flex-end',
         columnGap: 5,
         // flex: 1,
         // flexShrink: 1,
@@ -72,7 +72,6 @@ export const styles = StyleSheet.create({
     playingNowSchedule: {
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        gap: 5,
         flex: 2,
     },
     radioPlayer: {
@@ -91,24 +90,31 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         // padding: 15,
     },
-    nowTimeText: {
+    nowText: {
         color: 'rgba(255,255,255,1)',
-        fontWeight: '200',
         fontSize: 32,
+    },
+    nowTimeText: {
+        fontWeight: '200',   
     },
     nowTitleText: {
-        color: 'rgba(255,255,255,1)',
         fontWeight: '800',
-        fontSize: 32,
+    },
+    nowDescriptionText: {
+        fontWeight: '200',
+        fontSize: 18,
+    },
+    nextText: {
+        color: 'rgba(255,255,255,1)',
+        fontSize: 18,
     },
     nextTimeText: {
-        color: 'rgba(255,255,255,1)',
         fontWeight: '200',
-        fontSize: 20,
     },
     nextTitleText: {
-        color: 'rgba(255,255,255,1)',
         fontWeight: '800',
-        fontSize: 20,
+    },
+    nextRepeatText: {
+        fontWeight: '200',
     },
 })

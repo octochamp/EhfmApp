@@ -35,8 +35,8 @@ export const usePrismic = () => {
           const residentsResponse = await client.getByType('show', {
             page: currentPage,
             pageSize: 100,
-            orderings: "my.show.show_title"
-          }); 
+            orderings: { field: "my.show.show_title" }
+          });
 
           // Add the results from the current page to the allResidents array
           allResidents = allResidents.concat(residentsResponse.results);
@@ -52,7 +52,7 @@ export const usePrismic = () => {
 
         const homeFeatureResponse = await client.getByType('home_feature', {
           pageSize: 100,
-          orderings: "my.home_feature.order"
+          orderings: { field: "my.home_feature.order" }
         });
         setAllCarouselItems(homeFeatureResponse.results || []);
 

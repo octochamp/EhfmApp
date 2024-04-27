@@ -17,23 +17,19 @@ const App = () => {
   const { aboutPageData, supportPageData, residentsData, carouselData } =
     usePrismicData();
 
-  console.log("currentShowData: ", currentShowData)
-  if (residentsData) {
-    console.log("### residentsData found from Prismic")
-  } else {
-    console.log("### no residentsData found from Prismic")
-  }
-
   return (
     <>
       <ShowImage currentShowData={currentShowData} residentsData={residentsData} >
         <Overlay>
           <View style={styles.container}>
+            <View style={styles.menuOverlay}>
+              <Text>This text is a child of menuContainer</Text>
+            </View>
             <View style={styles.headerContainer}>
               <Header />
             </View>
             <View style={styles.footerContainer}>
-              <Footer />
+              <Footer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} />
             </View>
           </View>
         </Overlay>
