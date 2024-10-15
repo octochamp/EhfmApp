@@ -1,3 +1,4 @@
+import './gesture-handler';
 import React, { useEffect, useState } from 'react';
 import { Text, Button, View, Animated, StatusBar } from 'react-native';
 import { trackPlayerInit } from './components/RadioPlayer';
@@ -73,7 +74,7 @@ const App = () => {
             )}
             <View style={styles.headerMenuContainer}>
               <View style={styles.header}>
-                <Header menuVisibile={menuVisible} setMenuVisibility={setMenuVisibility} />
+                <Header menuVisible={menuVisible} setMenuVisibility={setMenuVisibility} />
               </View>
               {menuVisible && (
                 <Animated.View style={{ ...styles.menu, opacity: menuOpacity }}>

@@ -54,7 +54,8 @@ const ShowImage = ({ currentShowData, residentsData, children }) => {
     } else {
       return (
         <View style={styles.backgroundImageContainer}>
-          <Text>Placeholder image</Text>
+          {/* for debug
+          <Text>Placeholder image</Text> */}
           <ImageBackground style={styles.backgroundImage} source={PlaceHolderImage}>
             {children}
           </ImageBackground>

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import ModalBackground from "./components/Modals/ModalBackground";
 
 export const styles = StyleSheet.create({
     backgroundImageContainer: {
@@ -135,4 +136,39 @@ export const styles = StyleSheet.create({
     nextRepeatText: {
         fontWeight: '200',
     },
+
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255,255,255,0)',
+    },
+    modalBackgroundContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,179,152,0.7)',
+    },
+    modalContent: {
+        width: '80%',
+        maxHeight: '80%',
+        padding: 20,
+        backgroundColor: 'rgba(255,255,255,0.9)',
+    },
+    modalH1: {
+        fontSize: 24,
+        color: 'rgb(0,179,152)',
+        paddingVertical: '2%',
+    },
+    modalBody: {
+        fontSize: 14,
+        color: 'rgb(0,179,152)',
+        paddingVertical: '2%',
+    },
+    modalButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: '4%',
+        color: 'black',
+    }
 })
