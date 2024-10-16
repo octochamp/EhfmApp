@@ -1,3 +1,5 @@
 {
-    "CodeGPT.apiKey": "Ollama"
+    "CodeGPT.apiKey": "Ollama",
+    "window.autoDetectColorScheme": true,
+    "continue.telemetryEnabled": false
 }

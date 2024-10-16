@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" baseProfile="tiny" version="1.2" viewBox="0 0 273 273">
+  <polygon id="Play" points="201.8 136.4 99.4 77.2 99.4 195.5 201.8 136.4" display="none" fill="#1d1d1b" fill-rule="evenodd"/>
+  <ellipse id="Play_Circle" cx="136.5" cy="136.5" rx="112.8" ry="111.8" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1.9"/>
+  <circle cx="56.7" cy="56.7" r="11.7" fill="#fff"/>
+  <circle cx="213" cy="153.5" r="8.2" fill="#fff"/>
+  <circle cx="60" cy="119.4" r="8.2" fill="#fff"/>
+  <circle cx="119.3" cy="213.7" r="8.2" fill="#fff"/>
+  <circle cx="153.7" cy="59.3" r="8.2" fill="#fff"/>
+  <circle cx="178.6" cy="202.6" r="8.2" fill="#fff"/>
+  <circle cx="94.5" cy="70.4" r="8.2" fill="#fff"/>
+  <circle cx="69.8" cy="178.9" r="8.2" fill="#fff"/>
+  <circle cx="203.2" cy="94.1" r="8.2" fill="#fff"/>
+</svg>
