@@ -1,14 +1,11 @@
-Mobile Android/iOS app for Edinburgh community radio station **ehfm.live**. Slowly being built using React Native. Initial goal is just a player and now/next schedule, new features to be added as/when/if desired.
+Mobile Android/iOS app for Edinburgh community radio station [EHFM](https://ehfm.live). 
 
 # Todo
-- ## Use Prismic images in RadioPlayer.js for mini player
-- ## Finish Interface layout styling
-- ## Fix player behaviour when app is killed
-- ## Distinguish play/pause behaviour
+- ## Fill menu modals with content & links
+-  ## Upgrade React-native-radio-player to allow us to:
+    - ## Fix player behaviour when stopping
 - ## Additional features
-- about/info
-- social links
-- chat integration(_if possible?_) or link
-- support
-- more schedule data
+    - chat integration(_if possible?_) or link
+    - pull in day's schedule
 - ## iOS version
+    - currently haven't tested anything with iOS
