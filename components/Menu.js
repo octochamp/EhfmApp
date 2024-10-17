@@ -5,6 +5,7 @@ import AboutModal from './Modals/AboutModal';
 import ListenBackModal from './Modals/ListenBackModal';
 import ScheduleModal from './Modals/ScheduleModal';
 import SupportModal from './Modals/SupportModal';
+import ReportModal from './Modals/ReportModal';
 import ModalBackground from './Modals/ModalBackground';
 
 import { useState } from 'react';
@@ -14,6 +15,7 @@ const Menu = () => {
     const [listenBackIsVisible, setListenBackIsVisible] = useState(false);
     const [scheduleIsVisible, setScheduleIsVisible] = useState(false);
     const [supportIsVisible, setSupportIsVisible] = useState(false);
+    const [reportIsVisible, setReportIsVisible] = useState(false);
     const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
 
     // SORRY! Hacky quick way to wash out background by calling another modal which fades in at the same time as calling the actual modal which slides on over the top
@@ -26,16 +28,16 @@ const Menu = () => {
                 setAboutIsVisible(true);
                 break;
             case 'listenback':
-                // Additional logic for listenback if needed
                 setListenBackIsVisible(true);
                 break;
             case 'schedule':
-                // Additional logic for schedule if needed
                 setScheduleIsVisible(true);
                 break;
             case 'support':
-                // Additional logic for support if needed
                 setSupportIsVisible(true);
+                break;
+            case 'report':
+                setReportIsVisible(true);
                 break;
             default:
                 console.warn('Unknown modal type');
@@ -61,6 +63,10 @@ const Menu = () => {
                 // Additional logic for support if needed
                 setSupportIsVisible(false);
                 break;
+            case 'report':
+                // Additional logic for support if needed
+                setReportIsVisible(false);
+                break;
             default:
                 console.warn('Unknown modal type');
         }
@@ -68,17 +74,22 @@ const Menu = () => {
 
     return (
         <>
-            <Pressable onPress={() => modalPressed('about')}>
-                <Text style={styles.menuItem}>About</Text>
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0)' }]} onPress={() => modalPressed('about')}>
+                {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,1)' }, styles.menuItem]}>About</Text>)}
             </Pressable>
-            <Pressable onPress={() => modalPressed('listenback')}>
-                <Text style={styles.menuItem}>Listen back</Text>
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0)' }]} onPress={() => modalPressed('listenback')}>
+                {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,1)' }, styles.menuItem]}>Listen back</Text>)}
             </Pressable>
-            <Pressable onPress={() => modalPressed('schedule')}>
-                <Text style={styles.menuItem}>Schedule</Text>
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0)' }]} onPress={() => modalPressed('schedule')}>
+                {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,1)' }, styles.menuItem]}>Schedule</Text>)}
             </Pressable>
-            <Pressable onPress={() => modalPressed('support')}>
-                <Text style={styles.menuItem}>Support EHFM</Text>
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0)' }]} onPress={() => modalPressed('support')}>
+                {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,1)' }, styles.menuItem]}>Support EHFM</Text>)}
+            </Pressable>
+
+            {/*!!!!!!!!!!!!!!!!!!!!!! BELOW IS FOR APP BETA ONLY!!!! */}
+            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0)' }]} onPress={() => modalPressed('report')}>
+                {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.5)' }, styles.menuItem]}>Report app issues</Text>)}
             </Pressable>
 
             {modalBackgroundIsVisible && <ModalBackground onClose={() => setModalBackgroundIsVisible(false)} />}
@@ -86,6 +97,7 @@ const Menu = () => {
             {listenBackIsVisible && <ListenBackModal onClose={() => modalClosed('listenback')} />}
             {scheduleIsVisible && <ScheduleModal onClose={() => modalClosed('schedule')} />}
             {supportIsVisible && <SupportModal onClose={() => modalClosed('support')} />}
+            {reportIsVisible && <ReportModal onClose={() => modalClosed('report')} />}
         </>
     );
 };

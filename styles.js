@@ -54,10 +54,10 @@ export const styles = StyleSheet.create({
         gap: 10,
     },
     menuItem: {
-        // flex: 1,
         fontSize: 18,
         fontWeight: '400',
-        color: 'rgba(255,255,255,1)',
+/*         Colour is determined by the pressed state of the pressable */
+        /* color: 'rgba(255,255,255,1)', */
     },
 
 
@@ -103,75 +103,98 @@ export const styles = StyleSheet.create({
         width: '80%',
         maxHeight: 120,
     },
-    playerButtonContainer:{
+    playerButtonContainer: {
         width: '100%',
         height: '100%',
     },
     bodyText: {
-    color: 'rgba(255,255,255,1)',
-    fontSize: 18,
-    // padding: 15,
+        color: 'rgba(255,255,255,1)',
+        fontSize: 18,
+        // padding: 15,
     },
     nowText: {
-    color: 'rgba(255,255,255,1)',
-    fontSize: 32,
+        color: 'rgba(255,255,255,1)',
+        fontSize: 32,
     },
     nowTimeText: {
-    fontWeight: '200',
-},
+        fontWeight: '200',
+    },
     nowTitleText: {
-    fontWeight: '800',
-},
+        fontWeight: '800',
+    },
     nowDescriptionText: {
-    fontWeight: '200',
-    fontSize: 18,
-},
+        fontWeight: '200',
+        fontSize: 18,
+    },
     nextText: {
-    color: 'rgba(255,255,255,1)',
-    fontSize: 18,
-},
+        color: 'rgba(255,255,255,1)',
+        fontSize: 18,
+    },
     nextTimeText: {
-    fontWeight: '200',
-},
+        fontWeight: '200',
+    },
     nextTitleText: {
-    fontWeight: '800',
-},
+        fontWeight: '800',
+    },
     nextRepeatText: {
-    fontWeight: '200',
-},
+        fontWeight: '200',
+    },
+
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '5%',
+        marginBottom: '5%',
+        paddingVertical: '4%',
+        paddingHorizontal: '8%',
+        borderRadius: 8,
+        alignSelf: 'center',  // Makes the button shrink to content
+    },
+
+    buttonText: {
+        fontSize: 20,
+    },
 
     modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0)',
-},
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255,255,255,0)',
+    },
     modalBackgroundContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,179,152,0.7)',
-},
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,179,152,0.7)',
+    },
     modalContent: {
-    width: '80%',
-    maxHeight: '80%',
-    padding: 20,
-    backgroundColor: 'rgba(255,255,255,0.9)',
-},
+        width: '80%',
+        maxHeight: '80%',
+        padding: 20,
+        backgroundColor: 'rgba(255,255,255,0.9)',
+    },
     modalH1: {
-    fontSize: 24,
-    color: 'rgb(0,179,152)',
-    paddingVertical: '2%',
-},
+        fontSize: 28,
+        color: 'rgb(0,179,152)',
+        paddingVertical: '2%',
+        lineHeight: 34,
+    },
+    modalH2: {
+        fontSize: 20,
+        color: 'rgb(0,179,152)',
+        paddingVertical: '2%',
+        lineHeight: 24,
+    },
     modalBody: {
-    fontSize: 14,
-    color: 'rgb(0,179,152)',
-    paddingVertical: '2%',
-},
+        fontSize: 14,
+        color: 'black',
+        paddingVertical: '2%',
+        lineHeight: 20,
+    },
     modalButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: '4%',
-    color: 'black',
-}
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: '4%',
+        color: 'black',
+    }
 })

@@ -1,3 +1,13 @@
+// THIS IS ALL JUST HERE BECAUSE I HAD A CONSOLE WARNING AND I GOT CLAUDE TO REFACTOR SOME CODE
+// BUT IT'S 3AM AND i'M NOT SURE WHAT CHANGED
+
+// TOO TIRED TO CHECK AND I SHOULD HAVE DONE A GIT COMMIT BEFORE PASTING IT IN
+
+// BUT IT SEEMS TO WORK SO I'M GOING WITH IT
+
+// GOT THIS HERE IN CASE WE NEED IT THOUGH. SORRY IT'S MESSY x
+
+
 import React, { useEffect, useState, useRef } from 'react';
 import { Text, Button, View, Animated, Easing } from 'react-native';
 import TrackPlayer, { State, usePlaybackState, usePlayWhenReady, Event, useTrackPlayerEvents } from 'react-native-track-player';
@@ -76,96 +86,73 @@ const trackPlayerInit = async () => {
 };
 
 const ControlButton = ({ onPress, isPlaying, isBuffering }) => {
-  // Define all animation values at the top level
-  const outerRotation = useRef(new Animated.Value(0)).current;
-  const innerRotation = useRef(new Animated.Value(0)).current;
-  const playingRotation = useRef(new Animated.Value(0)).current;
+  if (isBuffering) {
+    // Create two separate rotation values for inner and outer circles
+    const outerRotation = useRef(new Animated.Value(0)).current;
+    const innerRotation = useRef(new Animated.Value(0)).current;
 
-  // Single useEffect to handle all animations
-  useEffect(() => {
-    // Reset all animations
-    outerRotation.setValue(0);
-    innerRotation.setValue(0);
-    playingRotation.setValue(0);
-
-    if (isBuffering) {
-      // Start buffering animations
+    const startRotations = () => {
+      // Outer rotation - slower
       Animated.loop(
         Animated.timing(outerRotation, {
           toValue: 1,
-          duration: 900,
+          duration: 900, // Outer rotation speed (higher is slower)
           easing: Easing.linear,
           useNativeDriver: true,
         })
       ).start();
 
+      // Inner rotation - faster
       Animated.loop(
         Animated.timing(innerRotation, {
           toValue: 1,
-          duration: 2000,
+          duration: 2000, // Inner rotation speed (higher is slower)
           easing: Easing.linear,
           useNativeDriver: true,
         })
       ).start();
-    } else if (isPlaying) {
-      // Start playing animation
-      Animated.loop(
-        Animated.timing(playingRotation, {
-          toValue: 1,
-          duration: 8000,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        })
-      ).start();
-    }
-
-    // Cleanup function
-    return () => {
-      outerRotation.stopAnimation();
-      innerRotation.stopAnimation();
-      playingRotation.stopAnimation();
     };
-  }, [isBuffering, isPlaying]);
 
-  // Interpolate all rotation values
-  const outerRotate = outerRotation.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
+    const outerRotate = outerRotation.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
+    });
 
-  const innerRotate = innerRotation.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
+    const innerRotate = innerRotation.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
+    });
 
-  const playingRotate = playingRotation.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
+    // Start both animations
+    useEffect(() => {
+      startRotations();
+    }, []);
 
-  // Render different states
-  if (isBuffering) {
     return (
       <Pressable onPress={onPress}>
         <View style={styles.playerButton}>
           <View style={{ aspectRatio: 1, position: 'relative' }}>
             <Animated.View
-              style={[{
-                position: 'relative',
-                width: '100%',
-                height: '100%',
-                transform: [{ rotate: innerRotate }]
-              }]}
+              style={[
+                {
+                  position: 'relative',
+                  width: '100%',
+                  height: '100%',
+                  transform: [{ rotate: innerRotate }]
+                }
+              ]}
             >
               <SvgXml xml={BufferingButtonInner} height="100%" width="100%" />
             </Animated.View>
             <Animated.View
-              style={[{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                transform: [{ rotate: outerRotate }]
-              }]}
+              style={[
+                {
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  transform: [{ rotate: outerRotate }]
+                }
+              ]}
             >
               <SvgXml xml={BufferingButtonOuter} height="100%" width="100%" />
             </Animated.View>
@@ -173,47 +160,74 @@ const ControlButton = ({ onPress, isPlaying, isBuffering }) => {
         </View>
       </Pressable>
     );
-  }
+  } else {
+    if (isPlaying) {
+      // Create a rotation values for outer circle
+      const playingRotation = useRef(new Animated.Value(0)).current;
 
-  if (isPlaying) {
-    return (
-      <Pressable onPress={onPress}>
-        <View style={styles.playerButton}>
-          <View style={{ aspectRatio: 1, position: 'relative' }}>
-            <Animated.View
-              style={[{
-                position: 'relative',
-                width: '100%',
-                height: '100%',
-                transform: [{ rotate: playingRotate }]
-              }]}
-            >
-              <SvgXml xml={PauseButtonOuter} height="100%" width="100%" />
-            </Animated.View>
-            <View
-              style={[{
-                position: 'absolute',
-                width: '100%',
-                height: '100%'
-              }]}
-            >
-              <SvgXml xml={PauseButtonInner} height="100%" width="100%" />
+      const startRotations = () => {
+        Animated.loop(
+          Animated.timing(playingRotation, {
+            toValue: 1,
+            duration: 8000,
+            easing: Easing.linear,
+            useNativeDriver: true,
+          })
+        ).start();
+      };
+
+      const playingRotate = playingRotation.interpolate({
+        inputRange: [0, 1],
+        outputRange: ['0deg', '360deg'],
+      });
+
+      // Start both animations
+      useEffect(() => {
+        startRotations();
+      }, []);
+      return (
+        <Pressable onPress={onPress}>
+          <View style={styles.playerButton}>
+            <View style={{ aspectRatio: 1, position: 'relative' }}>
+              <Animated.View
+                style={[
+                  {
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    transform: [{ rotate: playingRotate }]
+                  }
+                ]}
+              >
+                <SvgXml xml={PauseButtonOuter} height="100%" width="100%" />
+              </Animated.View>
+              <View
+                style={[
+                  {
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%'
+                  }
+                ]}
+              >
+                <SvgXml xml={PauseButtonInner} height="100%" width="100%" />
+              </View>
             </View>
           </View>
-        </View>
-      </Pressable>
-    );
+        </Pressable>
+      )
+    } else {
+      return (
+        <Pressable onPress={onPress}>
+          <View style={styles.playerButton}>
+            <View style={{ aspectRatio: 1 }}>
+              <SvgXml xml={PlayButton} height="100%" width="100%" />
+            </View>
+          </View>
+        </Pressable>
+      )
+    }
   }
-
-  return (
-    <Pressable onPress={onPress}>
-      <View style={styles.playerButton}>
-        <View style={{ aspectRatio: 1 }}>
-          <SvgXml xml={PlayButton} height="100%" width="100%" />
-        </View>
-      </View>
-    </Pressable>
-  );
 };
 
 const RadioPlayer = () => {

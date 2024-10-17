@@ -1,22 +1,35 @@
 import React from 'react';
-import { View, Text, ScrollView, Pressable, Modal as RNModal } from 'react-native';
+import { View, Text, ScrollView, Pressable, Modal as RNModal, Button, Linking } from 'react-native';
 import { styles } from "../../styles";
+
+const handleSchedulePress = async () => {
+    const scheduleURL = 'https://www.ehfm.live/schedule/';
+    await Linking.openURL(scheduleURL);
+};
 
 const ScheduleModal = ({ isVisible, onClose }) => {
     return (
         <RNModal visible={isVisible} animationType="slide" transparent={true} statusBarTranslucent={true}>
             <View style={styles.modalContainer}>
-                    <View style={styles.modalContent}>
-                        <ScrollView>
-                            <Text style={styles.modalH1}>Schedule Modal</Text>
-                            <Text style={styles.modalBody}>Founded in 2018, EHFM was set up as a digital platform for local creative souls to express themselves. Since then, we’ve built up a loving community of presenters and volunteers who allow us to broadcast 24 hours a day, seven days a week.</Text>
-                            <Text style={styles.modalBody}>Our programming approach is broad. We’ll play anything from club to Scottish traditional music; spoken word to panel discussions. </Text>
-                            <Text style={styles.modalBody}>For six years EHFM broadcast from multi-arts venue Summerhall, until recently moving to a new purpose-built studio space housed within our new Leith-based cafe, Ground Floor. All proceeds from the cafe go towards powering our radio station.</Text>
-                        </ScrollView>
+                <View style={styles.modalContent}>
+                    <ScrollView>
+                        <Text style={styles.modalH1}>Coming soon!</Text>
+                        <Text style={styles.modalBody}>Schedules in the app are in the works! For now, view the full schedule on ehfm.live.</Text>
+                    </ScrollView>
+                    <View style={{ width: '100%', alignItems: 'center' }}>
+                        <Pressable
+                            style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleSchedulePress()}>
+                            {({ pressed }) => (
+                                <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
+                                    Schedule ↗️
+                                </Text>
+                            )}
+                        </Pressable>
                         <Pressable style={styles.modalButton} onPress={onClose}>
                             <Text>CLOSE</Text>
                         </Pressable>
                     </View>
+                </View>
             </View>
         </RNModal>
     );

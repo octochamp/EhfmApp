@@ -2,6 +2,7 @@ import './gesture-handler';
 import React, { useEffect, useState } from 'react';
 import { Text, Button, View, Animated, StatusBar } from 'react-native';
 import { trackPlayerInit } from './components/RadioPlayer';
+import LinearGradient from 'react-native-linear-gradient';
 import Header from './components/Header';
 import Menu from './components/Menu';
 import Footer from './components/Footer';
@@ -10,11 +11,30 @@ import ShowImage from './components/ShowImage';
 import usePrismicData from './hooks/usePrismicData';
 import useCurrentShowData from './hooks/useCurrentShowData';
 import useNextShowData from './hooks/useNextShowData';
-import LinearGradient from 'react-native-linear-gradient';
+import BetaModal from './components/Modals/BetaModal'
 import { styles } from './styles';
 
 
 const App = () => {
+  // set up the beta welcome modal
+  const [betaIsVisible, setBetaIsVisible] = useState(false);
+  const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
+
+  const modalOpened = () => {
+    setModalBackgroundIsVisible(true);
+    setBetaIsVisible(true);
+  };
+
+  const modalClosed = () => {
+    setModalBackgroundIsVisible(false);
+    setBetaIsVisible(false);
+  };
+
+  // Open the beta welcome modal !! Turn off for Release!!
+  useEffect(() => {
+    modalOpened();
+  }, []);
+
   // initialise the radio player
   useEffect(() => {
     async function prepare() {
@@ -46,13 +66,13 @@ const App = () => {
         duration: 700,       // time for animation to complete
         useNativeDriver: true,  // tells React Native's UI thread to perform the animations on its own native code
       }).start();             // start the animation
-      
+
     } else {
       Animated.timing(menuOpacity, {
         toValue: 0,          // final value of the animated property
         duration: 300,       // time for animation to complete
         useNativeDriver: true,  // tells React Native's UI thread to perform the animations on its own native code
-      }).start(); 
+      }).start();
       Animated.timing(menuOverlayOpacity, {
         toValue: 0,          // final value of the animated property
         duration: 700,       // time for animation to complete
@@ -63,7 +83,8 @@ const App = () => {
 
   return (
     <>
-    <StatusBar translucent backgroundColor='transparent' />
+      {betaIsVisible && <BetaModal isVisible={betaIsVisible} onClose={() => modalClosed()} />}
+      <StatusBar translucent backgroundColor='transparent' />
       <ShowImage currentShowData={currentShowData} residentsData={residentsData} >
         <Overlay>
           <View style={styles.container}>
