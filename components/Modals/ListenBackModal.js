@@ -41,7 +41,7 @@ const ListenBackModal = ({ isVisible, onClose }) => {
                             )}
                         </Pressable>
                         <Pressable style={styles.modalButton} onPress={onClose}>
-                            <Text>CLOSE</Text>
+                            <Text style={styles.modalButtonText}>CLOSE</Text>
                         </Pressable>
                     </View>
                 </View>

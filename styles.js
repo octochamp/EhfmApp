@@ -196,5 +196,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: '4%',
         color: 'black',
+    },
+    modalButtonText: {
+        color: 'rgb(0,0,0)',
     }
 })

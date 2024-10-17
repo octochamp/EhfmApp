@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Pressable, Modal as RNModal, Button, Linking } 
 import { styles } from "../../styles";
 
 const BetaModal = ({ isVisible, onClose }) => {
-       return (
+    return (
         <RNModal visible={isVisible} animationType="slide" transparent={true} statusBarTranslucent={true}>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
@@ -15,7 +15,7 @@ const BetaModal = ({ isVisible, onClose }) => {
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                         <Pressable style={styles.modalButton} onPress={onClose}>
-                            <Text>CLOSE</Text>
+                            <Text style={styles.modalButtonText}>CLOSE</Text>
                         </Pressable>
                     </View>
                 </View>
