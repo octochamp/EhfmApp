@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, ScrollView, Pressable, Modal as RNModal, Button, Linking } from 'react-native';
+import { View, Text, ScrollView, Pressable, Modal as RNModal, Linking } from 'react-native';
 import { styles } from "../../styles";
 
 const ReportModal = ({ isVisible, onClose }) => {
     const handleReportPress = async () => {
         const url = 'https://www.grpahicdeisgn.com/contact/';
-        const appUrl = 'mailto://nathan@grpahicdeisgn.com';
+        const appUrl = 'mailto:nathan@grpahicdeisgn.com';
 
         try {
             // First try to open in app

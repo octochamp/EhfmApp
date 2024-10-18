@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Pressable, Modal as RNModal, Button, Linking } from 'react-native';
+import { View, Text, ScrollView, Pressable, Modal as RNModal, Linking } from 'react-native';
 import { styles } from "../../styles";
 
 const handleSchedulePress = async () => {

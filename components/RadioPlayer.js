@@ -65,10 +65,14 @@ const trackPlayerInit = async () => {
       Capability.Play,
       Capability.Pause,
       Capability.Stop,
+      Capability.JumpForward,
+      Capability.JumpBackward,
     ],
     compactCapabilities: [
       Capability.Play,
       Capability.Pause,
+      Capability.JumpForward,
+      Capability.JumpBackward,
     ],
     progressUpdateEventInterval: 2,
   });

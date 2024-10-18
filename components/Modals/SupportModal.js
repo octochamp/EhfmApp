@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, Pressable, Modal as RNModal } from 'react-native';
+import { View, Text, ScrollView, Pressable, Linking, Modal as RNModal } from 'react-native';
 import { styles } from "../../styles";
 import { SvgXml } from 'react-native-svg';
 
