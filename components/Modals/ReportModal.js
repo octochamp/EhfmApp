@@ -33,6 +33,7 @@ const ReportModal = ({ isVisible, onClose }) => {
                         <Text style={styles.modalBody}>This app is a work in progress and any feedback you can give is really useful for getting it ready for launch.</Text>
                         <Text style={styles.modalBody}>Email me below or drop me a message on insta @nathandavidsmith</Text>
                         <Text style={styles.modalBody}>Nathan 💞</Text>
+                        <Text style={styles.modalSub}>EhfmApp v0.1.1-beta</Text>
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                         <Pressable

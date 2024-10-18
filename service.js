@@ -20,7 +20,7 @@ module.exports = async function () {
     TrackPlayer.pause();
   });
 
-  TrackPlayer.addEventListener(Event.RemoteNext, () => {
+/*   TrackPlayer.addEventListener(Event.RemoteNext, () => {
     console.log('Event.RemoteNext');
     TrackPlayer.skipToNext();
   });
@@ -28,6 +28,6 @@ module.exports = async function () {
   TrackPlayer.addEventListener(Event.RemotePrevious, () => {
     console.log('Event.RemotePrevious');
     TrackPlayer.skipToPrevious();
-  });
+  }); */
 
 };

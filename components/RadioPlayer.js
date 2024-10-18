@@ -57,7 +57,7 @@ const trackPlayerInit = async () => {
     title: 'live',
     album: 'ehfm',
     artist: 'ehfm',
-    artwork: 'https://picsum.photos/100',
+    artwork: './assets/images/placeholder-showimg.jpg',
     isLiveStream: true,
   });
   await TrackPlayer.updateOptions({

@@ -191,6 +191,14 @@ export const styles = StyleSheet.create({
         paddingVertical: '2%',
         lineHeight: 20,
     },
+    modalSub: {
+        fontSize: 10,
+        width: '100%',
+        textAlign: 'center',
+        color: 'grey',
+        paddingVertical: '2%',
+        lineHeight: 20,
+    },
     modalButton: {
         alignItems: 'center',
         justifyContent: 'center',

@@ -14,9 +14,6 @@ const ShowImage = ({ currentShowData, residentsData, children }) => {
   const [prismicShow, setPrismicShow] = useState(null);
   const PlaceHolderImage = require('../assets/images/placeholder-showimg.jpg');
 
-  // console.log("ShowImage.js // currentShowData: ", currentShowData);
-  // console.log("ShowImage.js // Show in Prismic: ", getShowInPrismic({ residentsData, currentShowData }));
-
   useEffect(() => {
     setPrismicShow(getShowInPrismic({ residentsData, currentShowData }));
   }, [currentShowData, residentsData]);
