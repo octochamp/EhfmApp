@@ -7,6 +7,7 @@ Mobile Android/iOS app for Edinburgh community radio station [EHFM](https://ehfm
     - Fix menu items disappearing when horizontal 
     - ~~Add app icons~~
     - Revert show times to 24h clock
+    - add notification player show image
 - ## Additional features
     - chat integration(_if possible?_) or link
     - pull in daily schedule
