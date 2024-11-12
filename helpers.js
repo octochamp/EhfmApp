@@ -32,6 +32,14 @@ export function formatReadableTime(dateString) {
   }
 }
 
+export function format24hTime(dateString) {
+  const date = new Date(dateString);
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+}
+
+
 // Prismic helpers:
 export const SHOW_NOT_FOUND = "SHOW_NOT_FOUND";
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { formatReadableTime } from '../helpers';
+import { Text } from 'react-native';
+import { formatReadableTime, format24hTime } from '../helpers';
 import { styles } from '../styles';
 
 const ScheduleNext = ({ currentShowData, nextShowData, residentsData }) => {
@@ -33,14 +33,14 @@ const ScheduleNext = ({ currentShowData, nextShowData, residentsData }) => {
         const nextShowNameNoR = checkedNextShowDataNameApostropheFix.slice(0, -3);
         return (
             <>
-                <Text style={[styles.nextText, styles.nextTimeText]} adjustsFontSizeToFit={true}>{formatReadableTime(checkedNextShowData['starts'])}</Text>
+                <Text style={[styles.nextText, styles.nextTimeText]} adjustsFontSizeToFit={true}>{format24hTime(checkedNextShowData['starts'])}</Text>
                 <Text style={[styles.nextText, styles.nextTitleText]} adjustsFontSizeToFit={true}>{nextShowNameNoR}</Text>
                 <Text style={[styles.nextText, styles.nextRepeatText]}>(Replay)</Text>
             </>)
     } else {
         return (
             <>
-                <Text style={[styles.nextText, styles.nextTimeText]} adjustsFontSizeToFit={true}>{formatReadableTime(checkedNextShowData['starts'])}</Text>
+                <Text style={[styles.nextText, styles.nextTimeText]} adjustsFontSizeToFit={true}>{format24hTime(checkedNextShowData['starts'])}</Text>
                 {/* the replace code below fixes an issue with misrendering apostrophe characters */}
                 <Text style={[styles.nextText, styles.nextTitleText]} adjustsFontSizeToFit={true}>{checkedNextShowData['name'].replace(/&#039;/g, "'")}</Text>
             </>

@@ -83,7 +83,9 @@ const App = () => {
   }, [menuVisible]);         // run this effect whenever menuVisible changes
 
   const currentShowImageUrl = ShowImageUrl({ currentShowData, residentsData });
-  console.log('App.tsx currentShowImageUrl: ' + currentShowImageUrl)
+  
+  // logging to check if/when show data is being delivered through to the mini player
+  // console.log('App.tsx currentShowImageUrl: ' + currentShowImageUrl)
 
   return (
     <>

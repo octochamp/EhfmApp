@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
-import { formatReadableTime } from '../helpers';
+import { Text } from 'react-native';
+import { formatReadableTime, format24hTime } from '../helpers';
 import { styles } from '../styles';
 /* import useCurrentShowData from "../hooks/useCurrentShowData";
 import useNextShowData from "../hooks/useNextShowData"; */
@@ -63,7 +63,7 @@ const ScheduleNow = ({ currentShowData, nextShowData, residentsData }) => {
         const currentShowNameNoR = checkedCurrentShowDataNameApostropheFix.slice(0, -3);
         return (
             <>
-                <Text style={[styles.nowText, styles.nowTimeText]}>{formatReadableTime(checkedCurrentShowData['starts'])}</Text>
+                <Text style={[styles.nowText, styles.nowTimeText]}>{format24hTime(checkedCurrentShowData['starts'])}</Text>
                 <Text style={[styles.nowText, styles.nowTitleText]} numberOfLines={5}>{currentShowNameNoR}</Text>
                 <Text style={[styles.nowText, styles.nowDescriptionText]}>(Replay) {currentShowDescription}</Text>
             </>
@@ -71,7 +71,7 @@ const ScheduleNow = ({ currentShowData, nextShowData, residentsData }) => {
     } else {
         return (
             <>
-                <Text style={[styles.nowText, styles.nowTimeText]}>{formatReadableTime(checkedCurrentShowData['starts'])}</Text>
+                <Text style={[styles.nowText, styles.nowTimeText]}>{format24hTime(checkedCurrentShowData['starts'])}</Text>
                 <Text style={[styles.nowText, styles.nowTitleText]} numberOfLines={5}>{checkedCurrentShowData['name'].replace(/&#039;/g, "'")} </Text>
                 <Text style={[styles.nowText, styles.nowDescriptionText]}>{currentShowDescription}</Text>
             </>
