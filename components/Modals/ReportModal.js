@@ -31,9 +31,10 @@ const ReportModal = ({ isVisible, onClose }) => {
                         <Text style={styles.modalH1}>🪲 Found a bug?</Text>
                         <Text style={styles.modalH2}>Thanks for joining the private beta!</Text>
                         <Text style={styles.modalBody}>This app is a work in progress and any feedback you can give is really useful for getting it ready for launch.</Text>
-                        <Text style={styles.modalBody}>Email me below or drop me a message on insta @nathandavidsmith</Text>
+                        <Text style={styles.modalBody}>If you're comfortable using Github please raise issues on the repo.</Text>
+                        <Text style={styles.modalBody}>Otherwise, email me below or drop a message on insta @nathandavidsmith</Text>
                         <Text style={styles.modalBody}>Nathan 💞</Text>
-                        <Text style={styles.modalSub}>EhfmApp v0.1.1-beta</Text>
+                        <Text style={styles.modalSub}>EhfmApp v0.1.2-beta</Text>
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                         <Pressable
