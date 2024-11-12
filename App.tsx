@@ -35,6 +35,12 @@ const App = () => {
     modalOpened();
   }, []);
 
+  // get show data from useCurrentShowData() and useNextShowData()
+  const currentShowData = useCurrentShowData();
+  const nextShowData = useNextShowData();
+  const { aboutPageData, supportPageData, residentsData, carouselData } =
+    usePrismicData();
+
   // initialise the radio player
   useEffect(() => {
     async function prepare() {
@@ -42,12 +48,6 @@ const App = () => {
     }
     prepare();
   }, []);
-
-  // get show data from useCurrentShowData() and useNextShowData()
-  const currentShowData = useCurrentShowData();
-  const nextShowData = useNextShowData();
-  const { aboutPageData, supportPageData, residentsData, carouselData } =
-    usePrismicData();
 
   // Set menu invisible by default
   const [menuVisible, setMenuVisibility] = useState(false);

@@ -24,7 +24,7 @@ const Footer = ({ currentShowData, nextShowData, residentsData }) => {
                     <ScheduleNow currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} />
                 </View>
                 <View style={styles.radioPlayer}>
-                    <RadioPlayer />
+                    <RadioPlayer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} />
                 </View>
             </View>
         </>

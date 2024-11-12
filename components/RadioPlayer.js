@@ -50,14 +50,17 @@ const BufferingButtonInner = `
 `;
 
 const trackPlayerInit = async () => {
+  artworkUrl = require('../assets/images/placeholder-showimg.jpg');
+
   await TrackPlayer.setupPlayer();
+
   await TrackPlayer.add({
     id: '1',
     url: 'https://ehfm.out.airtime.pro/ehfm_a',
-    title: 'live',
-    album: 'ehfm',
-    artist: 'ehfm',
-    artwork: './assets/images/placeholder-showimg.jpg',
+    title: 'Edinburgh Community Radio',
+    album: 'EHFM Live',
+    artist: 'EHFM Live',
+    artwork: artworkUrl,
     isLiveStream: true,
   });
   await TrackPlayer.updateOptions({
@@ -71,6 +74,7 @@ const trackPlayerInit = async () => {
     compactCapabilities: [
       Capability.Play,
       Capability.Pause,
+      Capability.Stop,
       Capability.JumpForward,
       Capability.JumpBackward,
     ],
@@ -220,7 +224,7 @@ const ControlButton = ({ onPress, isPlaying, isBuffering }) => {
   );
 };
 
-const RadioPlayer = () => {
+const RadioPlayer = ({ currentShowData, nextShowData, residentsData }) => {
   const playbackState = usePlaybackState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
@@ -252,7 +256,7 @@ const RadioPlayer = () => {
   return (
     <>
       {/*       BUTTONS FOR DEBUGGING        */}
-      {/* <Button title="Start" onPress={() => TrackPlayer.play()} />
+{/*       <Button title="Start" onPress={() => TrackPlayer.play()} />
       <Button title="Stop" onPress={() => TrackPlayer.stop()} />
       <Text>The TrackPlayer is {isPlaying ? 'playing' : 'not playing'}</Text> */}
       <ControlButton onPress={onTogglePlayback} isPlaying={isPlaying} isBuffering={isBuffering} />
