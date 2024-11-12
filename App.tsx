@@ -11,6 +11,7 @@ import ShowImage from './components/ShowImage';
 import usePrismicData from './hooks/usePrismicData';
 import useCurrentShowData from './hooks/useCurrentShowData';
 import useNextShowData from './hooks/useNextShowData';
+import ShowImageUrl from './components/ShowImageUrl';
 import BetaModal from './components/Modals/BetaModal'
 import { styles } from './styles';
 
@@ -81,6 +82,9 @@ const App = () => {
     }
   }, [menuVisible]);         // run this effect whenever menuVisible changes
 
+  const currentShowImageUrl = ShowImageUrl({ currentShowData, residentsData });
+  console.log('App.tsx currentShowImageUrl: ' + currentShowImageUrl)
+
   return (
     <>
       {betaIsVisible && <BetaModal isVisible={betaIsVisible} onClose={() => modalClosed()} />}
@@ -104,7 +108,7 @@ const App = () => {
               )}
             </View>
             <View style={styles.footerContainer}>
-              <Footer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} />
+              <Footer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} currentShowImageUrl={currentShowImageUrl}/>
             </View>
           </View>
         </Overlay>

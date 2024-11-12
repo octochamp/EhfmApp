@@ -50,19 +50,9 @@ const BufferingButtonInner = `
 `;
 
 const trackPlayerInit = async () => {
-  artworkUrl = require('../assets/images/placeholder-showimg.jpg');
 
   await TrackPlayer.setupPlayer();
 
-  await TrackPlayer.add({
-    id: '1',
-    url: 'https://ehfm.out.airtime.pro/ehfm_a',
-    title: 'Edinburgh Community Radio',
-    album: 'EHFM Live',
-    artist: 'EHFM Live',
-    artwork: artworkUrl,
-    isLiveStream: true,
-  });
   await TrackPlayer.updateOptions({
     capabilities: [
       Capability.Play,
@@ -224,10 +214,14 @@ const ControlButton = ({ onPress, isPlaying, isBuffering }) => {
   );
 };
 
-const RadioPlayer = ({ currentShowData, nextShowData, residentsData }) => {
+const RadioPlayer = ({ currentShowData, nextShowData, residentsData, currentShowImageUrl }) => {
   const playbackState = usePlaybackState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
+  artworkUrl = currentShowImageUrl;
+  // artworkUrl = require('../assets/images/placeholder-showimg.jpg');
+  //artworkUrl = 'https://images.prismic.io/ehfm/ZtnHFLzzk9ZrXDWF_0-12.jpg?auto=format,compress';
+  console.log('Radioplayer.js currentShowImageUrl: ', currentShowImageUrl)
 
   useTrackPlayerEvents([Event.PlaybackState], (event) => {
     switch (event.state) {
@@ -248,7 +242,17 @@ const RadioPlayer = ({ currentShowData, nextShowData, residentsData }) => {
   const onTogglePlayback = async () => {
     if (isPlaying) {
       await TrackPlayer.stop();
+      await TrackPlayer.reset();
     } else {
+      await TrackPlayer.add({
+        id: '1',
+        url: 'https://ehfm.out.airtime.pro/ehfm_a',
+        title: currentShowData.name,
+        album: 'EHFM Live',
+        artist: 'EHFM Live',
+        artwork: artworkUrl,
+        isLiveStream: true,
+      });
       await TrackPlayer.play();
     }
   };
@@ -256,7 +260,7 @@ const RadioPlayer = ({ currentShowData, nextShowData, residentsData }) => {
   return (
     <>
       {/*       BUTTONS FOR DEBUGGING        */}
-{/*       <Button title="Start" onPress={() => TrackPlayer.play()} />
+      {/*       <Button title="Start" onPress={() => TrackPlayer.play()} />
       <Button title="Stop" onPress={() => TrackPlayer.stop()} />
       <Text>The TrackPlayer is {isPlaying ? 'playing' : 'not playing'}</Text> */}
       <ControlButton onPress={onTogglePlayback} isPlaying={isPlaying} isBuffering={isBuffering} />

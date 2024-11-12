@@ -8,7 +8,7 @@ import ScheduleNext from './ScheduleNext';
 import { View, Image, ImageBackground, Text } from 'react-native';
 import { styles } from "../styles";
 
-const Footer = ({ currentShowData, nextShowData, residentsData }) => {
+const Footer = ({ currentShowData, nextShowData, residentsData, currentShowImageUrl }) => {
     // get show data from useCurrentShowData() and useNextShowData()
     // const currentShowData = useCurrentShowData();
     // const nextShowData = useNextShowData();
@@ -24,7 +24,7 @@ const Footer = ({ currentShowData, nextShowData, residentsData }) => {
                     <ScheduleNow currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} />
                 </View>
                 <View style={styles.radioPlayer}>
-                    <RadioPlayer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} />
+                    <RadioPlayer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} currentShowImageUrl={currentShowImageUrl} />
                 </View>
             </View>
         </>
