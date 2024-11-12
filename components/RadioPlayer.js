@@ -54,6 +54,7 @@ const trackPlayerInit = async () => {
   await TrackPlayer.setupPlayer();
 
   await TrackPlayer.updateOptions({
+    autoUpdateMetadata: true,
     capabilities: [
       Capability.Play,
       Capability.Pause,
@@ -220,7 +221,6 @@ const RadioPlayer = ({ currentShowData, nextShowData, residentsData, currentShow
   const [isBuffering, setIsBuffering] = useState(false);
   artworkUrl = currentShowImageUrl;
   // artworkUrl = require('../assets/images/placeholder-showimg.jpg');
-  //artworkUrl = 'https://images.prismic.io/ehfm/ZtnHFLzzk9ZrXDWF_0-12.jpg?auto=format,compress';
   console.log('Radioplayer.js currentShowImageUrl: ', currentShowImageUrl)
 
   useTrackPlayerEvents([Event.PlaybackState], (event) => {
@@ -257,12 +257,29 @@ const RadioPlayer = ({ currentShowData, nextShowData, residentsData, currentShow
     }
   };
 
+  const updateNotificationPlayer = async () => {
+    console.log('...updating notification player');
+    await TrackPlayer.updateNowPlayingMetadata({
+      id: '1',
+      url: 'https://ehfm.out.airtime.pro/ehfm_a',
+      title: currentShowData.name,
+      album: 'EHFM Live',
+      artist: 'EHFM Live',
+      artwork: artworkUrl,
+      isLiveStream: true,
+    });
+    // await TrackPlayer.skip(1);
+  };
+
+  updateNotificationPlayer();
+
   return (
     <>
       {/*       BUTTONS FOR DEBUGGING        */}
       {/*       <Button title="Start" onPress={() => TrackPlayer.play()} />
       <Button title="Stop" onPress={() => TrackPlayer.stop()} />
-      <Text>The TrackPlayer is {isPlaying ? 'playing' : 'not playing'}</Text> */}
+      <Text>The TrackPlayer is {isPlaying ? 'playing' : 'not playing'}</Text>
+      <Button title="Change track info" onPress={() => updateNotificationPlayer()} /> */}
       <ControlButton onPress={onTogglePlayback} isPlaying={isPlaying} isBuffering={isBuffering} />
     </>
   );
