@@ -15,7 +15,6 @@ import ShowImageUrl from './components/ShowImageUrl';
 import BetaModal from './components/Modals/BetaModal'
 import { styles } from './styles';
 
-
 const App = () => {
   // set up the beta welcome modal
   const [betaIsVisible, setBetaIsVisible] = useState(false);

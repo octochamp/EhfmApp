@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, Pressable, Modal as RNModal, Linking } from 'react-native';
 import { styles } from "../../styles";
+import currentVersion from '../currentVersion';
 
 const ReportModal = ({ isVisible, onClose }) => {
     const handleReportPress = async () => {
@@ -34,7 +35,7 @@ const ReportModal = ({ isVisible, onClose }) => {
                         <Text style={styles.modalBody}>If you're comfortable using Github please raise issues on the repo.</Text>
                         <Text style={styles.modalBody}>Otherwise, email me below or drop a message on insta @nathandavidsmith</Text>
                         <Text style={styles.modalBody}>Nathan 💞</Text>
-                        <Text style={styles.modalSub}>EhfmApp v0.1.2-beta</Text>
+                        <Text style={styles.modalSub}>EhfmApp v{currentVersion()}</Text>
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                         <Pressable
