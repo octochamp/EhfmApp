@@ -17,7 +17,12 @@ module.exports = async function () {
 
   TrackPlayer.addEventListener(Event.RemotePause, () => {
     console.log('Event.RemotePause');
-    TrackPlayer.pause();
+    TrackPlayer.stop();
+  });
+
+  TrackPlayer.addEventListener(Event.RemoteStop, () => {
+    console.log('Event.RemoteStop');
+    TrackPlayer.stop();
   });
 
 /*   TrackPlayer.addEventListener(Event.RemoteNext, () => {
