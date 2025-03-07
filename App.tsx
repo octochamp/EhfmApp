@@ -12,11 +12,12 @@ import usePrismicData from './hooks/usePrismicData';
 import useCurrentShowData from './hooks/useCurrentShowData';
 import useNextShowData from './hooks/useNextShowData';
 import ShowImageUrl from './components/ShowImageUrl';
-import BetaModal from './components/Modals/BetaModal'
+import BetaModal from './components/Modals/BetaModal';
+import currentVersion from './currentVersion';
 import { styles } from './styles';
 
 const App = () => {
-  // set up the beta welcome modal
+  // Set up the beta welcome modal if currentVersion.js says this isn't a release build
   const [betaIsVisible, setBetaIsVisible] = useState(false);
   const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
 
@@ -30,10 +31,13 @@ const App = () => {
     setBetaIsVisible(false);
   };
 
-  // Open the beta welcome modal !! Turn off for Release!!
-  useEffect(() => {
-    modalOpened();
-  }, []);
+  if (currentVersion()[1] !== "release") {
+
+    // Open the beta welcome modal
+    useEffect(() => {
+      modalOpened();
+    }, []);
+  };
 
   // get show data from useCurrentShowData() and useNextShowData()
   const currentShowData = useCurrentShowData();
@@ -82,7 +86,7 @@ const App = () => {
   }, [menuVisible]);         // run this effect whenever menuVisible changes
 
   const currentShowImageUrl = ShowImageUrl({ currentShowData, residentsData });
-  
+
   // logging to check if/when show data is being delivered through to the mini player
   // console.log('App.tsx currentShowImageUrl: ' + currentShowImageUrl)
 
@@ -109,7 +113,7 @@ const App = () => {
               )}
             </View>
             <View style={styles.footerContainer}>
-              <Footer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} currentShowImageUrl={currentShowImageUrl}/>
+              <Footer currentShowData={currentShowData} nextShowData={nextShowData} residentsData={residentsData} currentShowImageUrl={currentShowImageUrl} />
             </View>
           </View>
         </Overlay>

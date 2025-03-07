@@ -8,16 +8,23 @@
             "script": "start",
             "group": "build"
         },
-        {
+/*         {
             "label": "🤖  Bundle Android",
             "detail": "Builds the Android app",
             "type": "shell",
             "command": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
             "group": "build"
+        }, */
+        {
+            "label": "🤖  Bundle Android .aab",
+            "detail": "Builds the Android app",
+            "type": "shell",
+            "command": "npx react-native build-android --mode=release",
+            "group": "build"
         },
         {
-            "label": "🏭  Build Android Release",
-            "detail": "Builds the Android app in release mode",
+            "label": "🏭  Build Android .apk",
+            "detail": "Builds the Android app .apk in release mode",
             "type": "shell",
             "command": "./gradlew assembleRelease",
             "options": {
@@ -27,3 +34,4 @@
         }
     ]
 }
+

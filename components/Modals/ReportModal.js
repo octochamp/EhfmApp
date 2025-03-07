@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, Pressable, Modal as RNModal, Linking } from 'react-native';
 import { styles } from "../../styles";
-import currentVersion from '../currentVersion';
+import currentVersion from '../../currentVersion';
 
 const ReportModal = ({ isVisible, onClose }) => {
     const handleReportPress = async (linkType, appUrl, webUrl) => {

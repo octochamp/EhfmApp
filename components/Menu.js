@@ -7,8 +7,9 @@ import ScheduleModal from './Modals/ScheduleModal';
 import SupportModal from './Modals/SupportModal';
 import ReportModal from './Modals/ReportModal';
 import ModalBackground from './Modals/ModalBackground';
+import currentVersion from '../currentVersion';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Menu = () => {
     const [aboutIsVisible, setAboutIsVisible] = useState(false);
@@ -17,6 +18,12 @@ const Menu = () => {
     const [supportIsVisible, setSupportIsVisible] = useState(false);
     const [reportIsVisible, setReportIsVisible] = useState(false);
     const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
+    const [isReleaseMode, setIsReleaseMode] = useState(false);
+
+    useEffect(() => {
+        const versionInfo = currentVersion();
+        setIsReleaseMode(versionInfo[1] == "release");
+    }, []);
 
     // SORRY! Hacky quick way to wash out background by calling another modal which fades in at the same time as calling the actual modal which slides on over the top
 
@@ -52,19 +59,15 @@ const Menu = () => {
                 setAboutIsVisible(false);
                 break;
             case 'listenback':
-                // Additional logic for listenback if needed
                 setListenBackIsVisible(false);
                 break;
             case 'schedule':
-                // Additional logic for schedule if needed
                 setScheduleIsVisible(false);
                 break;
             case 'support':
-                // Additional logic for support if needed
                 setSupportIsVisible(false);
                 break;
             case 'report':
-                // Additional logic for support if needed
                 setReportIsVisible(false);
                 break;
             default:
@@ -87,11 +90,12 @@ const Menu = () => {
                 {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,1)' }, styles.menuItem]}>Support EHFM</Text>)}
             </Pressable>
 
-            {/*!!!!!!!!!!!!!!!!!!!!!! BELOW IS FOR APP BETA ONLY!!!! */}
-            <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0)' }]} onPress={() => modalPressed('report')}>
-                {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.5)' }, styles.menuItem]}>Report app issues</Text>)}
-            </Pressable>
-
+            {!isReleaseMode &&
+                // Report button is only visible in beta mode
+                <Pressable style={({ pressed }) => [{ backgroundColor: pressed ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0)' }]} onPress={() => modalPressed('report')}>
+                    {({ pressed }) => (<Text style={[{ color: pressed ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.5)' }, styles.menuItem]}>Report app issues</Text>)}
+                </Pressable>
+            }
             {modalBackgroundIsVisible && <ModalBackground onClose={() => setModalBackgroundIsVisible(false)} />}
             {aboutIsVisible && <AboutModal onClose={() => modalClosed('about')} />}
             {listenBackIsVisible && <ListenBackModal onClose={() => modalClosed('listenback')} />}
