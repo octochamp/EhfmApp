@@ -48,7 +48,7 @@ const ScheduleNow = ({ currentShowData, nextShowData, residentsData }) => {
     // Check if a show description is provided, if not use generic
     // March 2025: leaving generic as blank for now, can change later if preferred.
     if (!currentShowDescription || currentShowDescription === '') {
-        currentShowDescription = 'generic description'
+        currentShowDescription = ''
     }
 
     // If show isn't loaded (name is blank) then make show description blank too. This is used to prevent generic description flashing in while app loading.
