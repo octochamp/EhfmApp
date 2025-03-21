@@ -8,23 +8,16 @@ const ScheduleNext = ({ currentShowData, nextShowData, residentsData }) => {
     // check that the show data is being returned as an object containing data, not a null
     // if null is being returned (due to error handling in useCurrentShowData() etc),
     // then output empty strings for each key-value pair that we use (ie. 'name', 'ends')
-    const checkCurrentShowData = () => {
-        if (currentShowData === null) {
-            return { name: '' };
-        } else {
-            return currentShowData;
-        }
-    };
+
     const checkNextShowData = () => {
-        if (nextShowData === null) {
-            return { name: '', ends: '' };
+        if (!nextShowData) {
+            return { name: '', starts: '', ends: '' };
         } else {
             return nextShowData;
         }
     };
 
     // create variables which we can safely access
-    const checkedCurrentShowData = checkCurrentShowData();
     const checkedNextShowData = checkNextShowData();
 
     // check if the show is listed as a repeat. if it is, then reformat the (R) at the end of the title into something more elegant

@@ -30,13 +30,29 @@ export function formatReadableTime(dateString) {
       return formattedTime;
     }
   }
+};
+
+// To check that start times aren't NaN
+export function isNumeric(value) {
+  return typeof value === 'number' && !Number.isNaN(value);
 }
 
 export function format24hTime(dateString) {
-  const date = new Date(dateString);
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+  // First, ensure the input is a string representation of a date
+  if (typeof dateString !== 'string') {
+    return ' ';
+  }
+
+  const parsedDate = new Date(dateString);
+
+  // Check if parsing the date was successful and not NaN
+  if (!Number.isNaN(parsedDate.getTime())) {
+    const hour = parsedDate.getHours();
+    const minute = parsedDate.getMinutes();
+    return `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+  } else {
+    return ' ';
+  }
 }
 
 

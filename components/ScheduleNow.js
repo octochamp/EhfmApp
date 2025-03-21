@@ -33,31 +33,30 @@ const ScheduleNow = ({ currentShowData, nextShowData, residentsData }) => {
     // if null is being returned (due to error handling in useCurrentShowData() etc),
     // then output empty strings for each key-value pair that we use (ie. 'name', 'ends')
     const checkCurrentShowData = () => {
-        if (currentShowData === null) {
-            return { name: '' };
+        if (!currentShowData) {
+            return { name: '', starts: '', ends: '' };
         } else {
             return currentShowData;
-        }
-    };
-    const checkNextShowData = () => {
-        if (nextShowData === null) {
-            return { name: '', ends: '' };
-        } else {
-            return nextShowData;
         }
     };
 
     // create variables which we can safely access
     const checkedCurrentShowData = checkCurrentShowData();
-    const checkedNextShowData = checkNextShowData();
 
     let currentShowDescription = getPrismicShowDescription({ currentShowData, residentsData })
-    //check if a show description is provided, if not use generic
+
+    // Check if a show description is provided, if not use generic
+    // March 2025: leaving generic as blank for now, can change later if preferred.
     if (!currentShowDescription || currentShowDescription === '') {
-        currentShowDescription = 'Edinburgh Community Radio'
+        currentShowDescription = 'generic description'
     }
 
-    // check if the show is listed as a repeat. if it is, then reformat the (R) at the end of the title into something more elegant
+    // If show isn't loaded (name is blank) then make show description blank too. This is used to prevent generic description flashing in while app loading.
+    if (checkedCurrentShowData['name'] === '') {
+        currentShowDescription = ''
+    }
+
+    // Check if the show is listed as a repeat. if it is, then reformat the (R) at the end of the title into something more elegant.
     if (checkedCurrentShowData['name'].slice(-3) === '(R)') {
         const checkedCurrentShowDataNameApostropheFix = checkedCurrentShowData['name'].replace(/&#039;/g, "'");
         const currentShowNameNoR = checkedCurrentShowDataNameApostropheFix.slice(0, -3);
