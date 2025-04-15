@@ -16,4 +16,4 @@ Mobile Android/iOS app for Edinburgh community radio station [EHFM](https://ehfm
     - chat integration (_if possible?_) or link
     - pull in daily schedule
 - ## iOS version
-    - currently haven't tested anything with iOS
+    - testing
