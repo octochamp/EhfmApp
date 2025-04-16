@@ -51,7 +51,8 @@ const BufferingButtonInner = `
 
 const trackPlayerInit = async () => {
 
-  await TrackPlayer.setupPlayer();
+  await TrackPlayer.setupPlayer({
+  });
 
   await TrackPlayer.updateOptions({
     autoUpdateMetadata: true,
@@ -68,6 +69,16 @@ const trackPlayerInit = async () => {
       Capability.Stop,
       Capability.JumpForward,
       Capability.JumpBackward,
+    ],
+    notificationCapabilities: [
+      Capability.Play,
+      Capability.Pause,
+      Capability.Stop,
+    ],
+    iosCapabilities: [
+      Capability.Play,
+      Capability.Pause,
+      Capability.Stop,
     ],
     progressUpdateEventInterval: 2,
   });
@@ -276,7 +287,7 @@ const RadioPlayer = ({ currentShowData, nextShowData, residentsData, currentShow
   return (
     <>
       {/*       BUTTONS FOR DEBUGGING        */}
-      {/*       <Button title="Start" onPress={() => TrackPlayer.play()} />
+      {/* <Button title="Start" onPress={() => TrackPlayer.play()} />
       <Button title="Stop" onPress={() => TrackPlayer.stop()} />
       <Text>The TrackPlayer is {isPlaying ? 'playing' : 'not playing'}</Text>
       <Button title="Change track info" onPress={() => updateNotificationPlayer()} /> */}

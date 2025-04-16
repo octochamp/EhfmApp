@@ -25,10 +25,11 @@ const Menu = () => {
         setIsReleaseMode(versionInfo[1] == "release");
     }, []);
 
+    // Below is disabled for now, doesn't play well on iOS.
     // SORRY! Hacky quick way to wash out background by calling another modal which fades in at the same time as calling the actual modal which slides on over the top
 
     const modalPressed = (modal) => {
-        setModalBackgroundIsVisible(true);
+        // setModalBackgroundIsVisible(true);
 
         switch (modal) {
             case 'about':
@@ -52,7 +53,7 @@ const Menu = () => {
     };
 
     const modalClosed = (modal) => {
-        setModalBackgroundIsVisible(false);
+        // setModalBackgroundIsVisible(false);
 
         switch (modal) {
             case 'about':
