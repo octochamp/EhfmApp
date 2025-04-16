@@ -51,7 +51,12 @@ const BufferingButtonInner = `
 
 const trackPlayerInit = async () => {
 
-  await TrackPlayer.setupPlayer();
+  await TrackPlayer.setupPlayer({
+    iosCategoryMode: 'playback',
+    iosCapabilities: [
+      TrackPlayer.IOSCategory.Playback,
+    ]
+  });
 
   await TrackPlayer.updateOptions({
     autoUpdateMetadata: true,
@@ -68,6 +73,16 @@ const trackPlayerInit = async () => {
       Capability.Stop,
       Capability.JumpForward,
       Capability.JumpBackward,
+    ],
+    notificationCapabilities: [
+      Capability.Play,
+      Capability.Pause,
+      Capability.Stop,
+    ],
+    iosCapabilities: [
+      Capability.Play,
+      Capability.Pause,
+      Capability.Stop,
     ],
     progressUpdateEventInterval: 2,
   });
