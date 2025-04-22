@@ -153,8 +153,8 @@ export const styles = StyleSheet.create({
 
     buttonText: {
         fontSize: 20,
+        fontWeight: '200',
     },
-
     modalContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -171,22 +171,38 @@ export const styles = StyleSheet.create({
         width: '80%',
         maxHeight: '80%',
         padding: 20,
-        backgroundColor: 'rgba(255,255,255,0.9)',
+        backgroundColor: 'rgba(255,255,255,0.96)',
+        borderRadius: 10,
     },
     modalH1: {
         fontSize: 28,
+        fontWeight: '800',
         color: 'rgb(0,179,152)',
         paddingVertical: '2%',
         lineHeight: 34,
     },
     modalH2: {
         fontSize: 20,
+        fontWeight: '400',
         color: 'rgb(0,179,152)',
         paddingVertical: '2%',
         lineHeight: 24,
     },
+    modalSchedule: {
+        fontSize: 26,
+        fontWeight: '800',
+        color: 'rgb(0,0,0)',
+        lineHeight: 30,
+    },
+    modalScheduleTime: {
+        fontSize: 26,
+        fontWeight: '200',
+        color: 'rgb(0,0,0)',
+        lineHeight: 30,
+    },
     modalBody: {
         fontSize: 14,
+        fontWeight: '200',
         color: 'black',
         paddingVertical: '2%',
         lineHeight: 20,
@@ -207,5 +223,6 @@ export const styles = StyleSheet.create({
     },
     modalButtonText: {
         color: 'rgb(0,0,0)',
+        fontWeight: '200',
     }
 })

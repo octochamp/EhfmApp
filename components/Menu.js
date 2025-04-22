@@ -11,7 +11,7 @@ import currentVersion from '../currentVersion';
 
 import { useState, useEffect } from 'react';
 
-const Menu = () => {
+const Menu = ({ scheduleData, residentsData }) => {
     const [aboutIsVisible, setAboutIsVisible] = useState(false);
     const [listenBackIsVisible, setListenBackIsVisible] = useState(false);
     const [scheduleIsVisible, setScheduleIsVisible] = useState(false);
@@ -100,7 +100,7 @@ const Menu = () => {
             {modalBackgroundIsVisible && <ModalBackground onClose={() => setModalBackgroundIsVisible(false)} />}
             {aboutIsVisible && <AboutModal onClose={() => modalClosed('about')} />}
             {listenBackIsVisible && <ListenBackModal onClose={() => modalClosed('listenback')} />}
-            {scheduleIsVisible && <ScheduleModal onClose={() => modalClosed('schedule')} />}
+            {scheduleIsVisible && <ScheduleModal scheduleData={scheduleData} residentsData={residentsData} isVisible={scheduleIsVisible} onClose={() => modalClosed('schedule')} />}
             {supportIsVisible && <SupportModal onClose={() => modalClosed('support')} />}
             {reportIsVisible && <ReportModal onClose={() => modalClosed('report')} />}
         </>

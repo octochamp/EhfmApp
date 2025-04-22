@@ -1,27 +1,60 @@
 import React from 'react';
 import { View, Text, ScrollView, Pressable, Modal as RNModal, Linking } from 'react-native';
 import { styles } from "../../styles";
+import { getShowInPrismic } from '../../helpers';
+import ScheduleItem from '../ScheduleItem';
 
-const handleSchedulePress = async () => {
-    const scheduleURL = 'https://www.ehfm.live/schedule/';
+const handleLinkPress = async (url) => {
+    const scheduleURL = url;
     await Linking.openURL(scheduleURL);
 };
 
-const ScheduleModal = ({ isVisible, onClose }) => {
+const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
+    const currentDate = new Date();
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayOfWeek = daysOfWeek[currentDate.getDay()];
+
+    // Format the date to include ordinal suffix (e.g., 22nd, 23rd, etc.)
+    const getOrdinalSuffix = (day) => {
+        if (day > 3 && day < 21) return 'th';
+        switch (day % 10) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+        }
+    };
+
+    const formattedDate = `${currentDate.getDate()}${getOrdinalSuffix(currentDate.getDate())} ${currentDate.toLocaleString('default', { month: 'long' })}`;
+
     return (
         <RNModal visible={isVisible} animationType="slide" transparent={true} statusBarTranslucent={true}>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
                     <ScrollView>
-                        <Text style={styles.modalH1}>Coming soon!</Text>
-                        <Text style={styles.modalBody}>Schedules in the app are in the works! For now, view the full schedule on ehfm.live.</Text>
+                        <Text style={styles.modalH1}>{dayOfWeek} {formattedDate}</Text>
+                        <Text style={styles.modalH2}>Coming up...</Text>
+                        {scheduleData.scheduleDataArray.map((scheduleItemData, i) => {
+                            const listNumber = i;
+                            const showName = scheduleItemData.name;
+                            const showStarts = scheduleItemData.starts;
+                            return (
+                                <>
+                                    <Text style={styles.modalBody}></Text>
+                                    <ScheduleItem listNumber={listNumber} showName={showName} showStarts={showStarts} />
+                                </>
+                            );
+                        }
+                        )
+                        }
+                        <ScheduleItem></ScheduleItem>
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                         <Pressable
-                            style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleSchedulePress()}>
+                            style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleLinkPress('https://www.ehfm.live/schedule/')}>
                             {({ pressed }) => (
                                 <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
-                                    Schedule ↗️
+                                    Full schedule ↗️
                                 </Text>
                             )}
                         </Pressable>

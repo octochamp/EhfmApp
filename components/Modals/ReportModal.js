@@ -36,7 +36,7 @@ const ReportModal = ({ isVisible, onClose }) => {
                         <Text style={styles.modalH1}>🪲 Found a bug?</Text>
                         <Text style={styles.modalH2}>Thanks for helping test the EHFM app!</Text>
                         <Text style={styles.modalBody}>It's a work in progress and any feedback you can give is really useful.</Text>
-                        <Text style={styles.modalBody}>If you're comfortable using Github please raise issues on there. Otherwise, contact me via the email form below or message on Instagram.</Text>
+                        <Text style={styles.modalBody}>If you're comfortable using Github please raise issues on there, and if you're comfortable with React Native then your help is appreciated! Otherwise, report bugs through the Android Play Store or Apple's TestPilot.</Text>
                         <Text style={styles.modalBody}>🤓 Nathan</Text>
                         <Text style={styles.modalSub}>EhfmApp v{currentVersion()}</Text>
                     </ScrollView>
@@ -45,23 +45,7 @@ const ReportModal = ({ isVisible, onClose }) => {
                             style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleReportPress('web', 'https://github.com/octochamp/EhfmApp/issues', 'https://github.com/octochamp/EhfmApp/issues')}>
                             {({ pressed }) => (
                                 <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
-                                    Report on Github
-                                </Text>
-                            )}
-                        </Pressable>
-                        <Pressable
-                            style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleReportPress('app', 'mailto:nathan@grpahicdeisgn.com?subject=EHFM%20app%20feedback', 'https://www.grpahicdeisgn.com/contact/')}>
-                            {({ pressed }) => (
-                                <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
-                                    Report via email
-                                </Text>
-                            )}
-                        </Pressable>
-                        <Pressable
-                            style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleReportPress('app', 'instagram://user?username=nathandavidsmith', 'https:/instagram.com/nathandavidsmith/')}>
-                            {({ pressed }) => (
-                                <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
-                                    Report via Instagram
+                                    Github 👩‍💻
                                 </Text>
                             )}
                         </Pressable>
