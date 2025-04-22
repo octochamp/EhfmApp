@@ -14,6 +14,6 @@ Mobile Android/iOS app for Edinburgh community radio station [EHFM](https://ehfm
     - Fix menu items disappearing when horizontal
 - ## Additional features
     - chat integration (_if possible?_) or link
-    - pull in daily schedule
+    - ~~pull in daily schedule~~
 - ## iOS version
     - testing
