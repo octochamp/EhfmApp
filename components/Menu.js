@@ -19,7 +19,6 @@ const Menu = ({ scheduleData, residentsData }) => {
     const [reportIsVisible, setReportIsVisible] = useState(false);
     const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
     const [isReleaseMode, setIsReleaseMode] = useState(false);
-    
 
     useEffect(() => {
         const versionInfo = currentVersion();
