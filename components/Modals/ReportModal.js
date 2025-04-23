@@ -38,7 +38,7 @@ const ReportModal = ({ isVisible, onClose }) => {
                         <Text style={styles.modalBody}>It's a work in progress and any feedback you can give is really useful.</Text>
                         <Text style={styles.modalBody}>If you're comfortable using Github please raise issues on there, and if you're comfortable with React Native then your help is appreciated! Otherwise, report bugs through the Android Play Store or Apple's TestPilot.</Text>
                         <Text style={styles.modalBody}>🤓 Nathan</Text>
-                        <Text style={styles.modalSub}>EhfmApp v{currentVersion()}</Text>
+                        <Text style={styles.modalSub}>EhfmApp v{currentVersion().version} ({currentVersion().releaseType}), build date {currentVersion().buildDate}</Text>
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                         <Pressable
