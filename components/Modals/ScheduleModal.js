@@ -36,13 +36,11 @@ const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
                         <Text style={styles.modalH2}>Coming up...</Text>
                         {scheduleData.scheduleDataArray.map((scheduleItemData, i) => {
                             const listNumber = i;
+                            const id = scheduleItemData.id;
                             const showName = scheduleItemData.name;
                             const showStarts = scheduleItemData.starts;
                             return (
-                                <>
-                                    <Text style={styles.modalBody}></Text>
-                                    <ScheduleItem listNumber={listNumber} showName={showName} showStarts={showStarts} />
-                                </>
+                                <ScheduleItem key={id} listNumber={listNumber} showName={showName} showStarts={showStarts} />
                             );
                         }
                         )
