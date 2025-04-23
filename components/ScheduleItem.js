@@ -10,7 +10,7 @@ const ScheduleItem = ({ listNumber, showName, showStarts }) => {
             <View style={{ flex: 1, paddingRight: 1, flexBasis: '10%', height: 'auto' }}>
                 <Text style={styles.modalScheduleTime}>{formattedTime}</Text>
             </View>
-            <View style={{ flex: 1, flexBasis: '50%', height: 'auto' }}>
+            <View style={{ flex: 1, flexBasis: '65%', height: 'auto' }}>
                 <Text style={styles.modalSchedule}>{showName}</Text>
                 {/* <Text style={styles.modalSchedule}>Very long show name as a test. This is a long one.</Text> */}
             </View>

@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, ScrollView, Pressable, Modal as RNModal, Linking } from 'react-native';
 import { styles } from "../../styles";
 import currentVersion from '../../currentVersion';
+import { SvgXml } from 'react-native-svg';
+import { closeButton } from '../../assets/vectors/Vectors';
 
 const ReportModal = ({ isVisible, onClose }) => {
     const handleReportPress = async (linkType, appUrl, webUrl) => {
@@ -32,11 +34,19 @@ const ReportModal = ({ isVisible, onClose }) => {
         <RNModal visible={isVisible} animationType="slide" transparent={true} statusBarTranslucent={true}>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
+                    <Pressable style={styles.modalButton} onPress={onClose}>
+                        <SvgXml
+                            xml={closeButton}
+                            width={32}
+                            height={32}
+                            style={{ marginLeft: 0 }}
+                        />
+                    </Pressable>
                     <ScrollView>
                         <Text style={styles.modalH1}>🪲 Found a bug?</Text>
                         <Text style={styles.modalH2}>Thanks for helping test the EHFM app!</Text>
                         <Text style={styles.modalBody}>It's a work in progress and any feedback you can give is really useful.</Text>
-                        <Text style={styles.modalBody}>If you're comfortable using Github please raise issues on there, and if you're comfortable with React Native then your help is appreciated! Otherwise, report bugs through the Android Play Store or Apple's TestPilot.</Text>
+                        <Text style={styles.modalBody}>If you're comfortable using Github please raise issues on there, and if you're comfortable with React Native then your help is appreciated! Otherwise, report bugs through the Android Play Store or Apple's TestFlight.</Text>
                         <Text style={styles.modalBody}>🤓 Nathan</Text>
                         <Text style={styles.modalSub}>EhfmApp v{currentVersion().version} ({currentVersion().releaseType}), build date {currentVersion().buildDate}</Text>
                     </ScrollView>
@@ -48,9 +58,6 @@ const ReportModal = ({ isVisible, onClose }) => {
                                     Github 👩‍💻
                                 </Text>
                             )}
-                        </Pressable>
-                        <Pressable style={styles.modalButton} onPress={onClose}>
-                            <Text style={styles.modalButtonText}>CLOSE</Text>
                         </Pressable>
                     </View>
                 </View>

@@ -16,6 +16,7 @@ import ShowImageUrl from './components/ShowImageUrl';
 import BetaModal from './components/Modals/BetaModal';
 import currentVersion from './currentVersion';
 import { styles } from './styles';
+import { closeButton } from './assets/vectors/Vectors';
 
 const App = () => {
 
@@ -34,9 +35,10 @@ const App = () => {
   };
 
   // Open the beta welcome modal. IMPORTANT: COMMENT OUT FOR RELEASE BUILDS
-  useEffect(() => {
+
+/*    useEffect(() => {
     modalOpened();
-  }, []);
+  }, []);  */
 
   // get now/next data from useCurrentShowData() and useNextShowData(), and remaining day's schedule from useScheduleData()
   const currentShowData = useCurrentShowData();

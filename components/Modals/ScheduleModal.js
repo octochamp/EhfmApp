@@ -3,6 +3,8 @@ import { View, Text, ScrollView, Pressable, Modal as RNModal, Linking } from 're
 import { styles } from "../../styles";
 import { getShowInPrismic } from '../../helpers';
 import ScheduleItem from '../ScheduleItem';
+import { SvgXml } from 'react-native-svg';
+import { closeButton } from '../../assets/vectors/Vectors';
 
 const handleLinkPress = async (url) => {
     const scheduleURL = url;
@@ -31,8 +33,17 @@ const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
         <RNModal visible={isVisible} animationType="slide" transparent={true} statusBarTranslucent={true}>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
-                    <ScrollView>
-                        <Text style={styles.modalH1}>{dayOfWeek} {formattedDate}</Text>
+                    <Pressable style={styles.modalButton} onPress={onClose}>
+                        <SvgXml
+                            xml={closeButton}
+                            width={32}
+                            height={32}
+                            style={{ marginLeft: 0 }}
+                        />
+                    </Pressable>
+                    <Text style={styles.modalH1}>{dayOfWeek} {formattedDate}</Text>
+                    <ScrollView fadingEdgeLength={150}>
+                        
                         <Text style={styles.modalH2}>Coming up...</Text>
                         {scheduleData.scheduleDataArray.map((scheduleItemData, i) => {
                             const listNumber = i;
@@ -48,18 +59,15 @@ const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
                         <ScheduleItem></ScheduleItem>
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
-                        <Pressable
-                            style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleLinkPress('https://www.ehfm.live/schedule/')}>
-                            {({ pressed }) => (
-                                <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
-                                    Full schedule ↗️
-                                </Text>
-                            )}
-                        </Pressable>
-                        <Pressable style={styles.modalButton} onPress={onClose}>
-                            <Text style={styles.modalButtonText}>CLOSE</Text>
-                        </Pressable>
-                    </View>
+                            <Pressable
+                                style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleLinkPress('https://www.ehfm.live/schedule/')}>
+                                {({ pressed }) => (
+                                    <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
+                                        Full schedule ↗️
+                                    </Text>
+                                )}
+                            </Pressable>
+                        </View>
                 </View>
             </View>
         </RNModal>

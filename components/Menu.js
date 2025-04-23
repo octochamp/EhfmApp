@@ -19,10 +19,11 @@ const Menu = ({ scheduleData, residentsData }) => {
     const [reportIsVisible, setReportIsVisible] = useState(false);
     const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
     const [isReleaseMode, setIsReleaseMode] = useState(false);
+    
 
     useEffect(() => {
         const versionInfo = currentVersion();
-        setIsReleaseMode(versionInfo[1] == "release");
+        setIsReleaseMode(versionInfo.releaseType == "release");
     }, []);
 
     // Below is disabled for now, doesn't play well on iOS.
@@ -102,7 +103,7 @@ const Menu = ({ scheduleData, residentsData }) => {
             {listenBackIsVisible && <ListenBackModal onClose={() => modalClosed('listenback')} />}
             {scheduleIsVisible && <ScheduleModal scheduleData={scheduleData} residentsData={residentsData} isVisible={scheduleIsVisible} onClose={() => modalClosed('schedule')} />}
             {supportIsVisible && <SupportModal onClose={() => modalClosed('support')} />}
-            {reportIsVisible && <ReportModal onClose={() => modalClosed('report')} />}
+            {reportIsVisible && <ReportModal onClose={() => modalClosed('report')} key={supportIsVisible ? 'visible' : 'hidden'} />}
         </>
     );
 };
