@@ -103,7 +103,7 @@ const Menu = ({ scheduleData, residentsData }) => {
             {listenBackIsVisible && <ListenBackModal onClose={() => modalClosed('listenback')} />}
             {scheduleIsVisible && <ScheduleModal scheduleData={scheduleData} residentsData={residentsData} isVisible={scheduleIsVisible} onClose={() => modalClosed('schedule')} />}
             {supportIsVisible && <SupportModal onClose={() => modalClosed('support')} />}
-            {reportIsVisible && <ReportModal onClose={() => modalClosed('report')} key={supportIsVisible ? 'visible' : 'hidden'} />}
+            {reportIsVisible && <ReportModal onClose={() => modalClosed('report')} />}
         </>
     );
 };

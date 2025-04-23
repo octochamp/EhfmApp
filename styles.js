@@ -168,7 +168,7 @@ export const styles = StyleSheet.create({
     },
     modalContent: {
         width: '80%',
-        maxHeight: '70%',
+        maxHeight: '80%',
         minHeight: '30%',
         padding: 30,
         backgroundColor: 'rgba(255,255,255,0.96)',
@@ -179,6 +179,13 @@ export const styles = StyleSheet.create({
     modalH1: {
         fontSize: 32,
         fontWeight: '800',
+        color: 'rgb(0,179,152)',
+        paddingVertical: '2%',
+        lineHeight: 38,
+    },
+    modalH1Light: {
+        fontSize: 32,
+        fontWeight: '200',
         color: 'rgb(0,179,152)',
         paddingVertical: '2%',
         lineHeight: 38,
@@ -194,13 +201,13 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '800',
         color: 'rgb(0,0,0)',
-        lineHeight: 32,
+        lineHeight: 40,
     },
     modalScheduleTime: {
         fontSize: 20,
         fontWeight: '200',
         color: 'rgb(0,0,0)',
-        lineHeight: 32,
+        lineHeight: 40,
     },
     modalBody: {
         fontSize: 16,

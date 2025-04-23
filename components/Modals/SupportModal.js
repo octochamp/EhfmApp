@@ -1,23 +1,10 @@
-import React, { useCallback, useState, useLayoutEffect } from 'react';
+import React, { useCallback, useState, useLayoutEffect, useEffect } from 'react';
 import { View, Text, ScrollView, Pressable, Linking, Modal as RNModal } from 'react-native';
 import { styles } from "../../styles";
 import { SvgXml } from 'react-native-svg';
 import { closeButton, patreonLogo, paypalLogo } from '../../assets/vectors/Vectors';
 
 const SupportModal = ({ isVisible, onClose }) => {
-
-    // Add a state to trigger re-render
-    const [, setForceUpdate] = useState({});
-
-    // Add the layout effect here, right after your component's state/props
-    useLayoutEffect(() => {
-        if (isVisible) {  // Only trigger when modal becomes visible
-            requestAnimationFrame(() => {
-                console.log('*************** FORCING')
-                setForceUpdate({});
-            });
-        }
-    }, [isVisible]);
 
     const handlePatreonPress = useCallback(async () => {
         const url = 'https://www.patreon.com/ehfm_live';

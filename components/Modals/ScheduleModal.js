@@ -41,10 +41,11 @@ const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
                             style={{ marginLeft: 0 }}
                         />
                     </Pressable>
-                    <Text style={styles.modalH1}>{dayOfWeek} {formattedDate}</Text>
+                    <Text style={styles.modalH1}>{formattedDate}</Text>
+                    <Text style={styles.modalH1Light}>{dayOfWeek}</Text>
                     <ScrollView fadingEdgeLength={150}>
                         
-                        <Text style={styles.modalH2}>Coming up...</Text>
+                        {/* <Text style={styles.modalSchedule}>Coming up...</Text> */}
                         {scheduleData.scheduleDataArray.map((scheduleItemData, i) => {
                             const listNumber = i;
                             const id = scheduleItemData.id;
@@ -56,7 +57,7 @@ const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
                         }
                         )
                         }
-                        <ScheduleItem></ScheduleItem>
+                        
                     </ScrollView>
                     <View style={{ width: '100%', alignItems: 'center' }}>
                             <Pressable
