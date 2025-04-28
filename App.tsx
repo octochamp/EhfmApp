@@ -20,7 +20,7 @@ import { closeButton } from './assets/vectors/Vectors';
 
 const App = () => {
 
-  // Set up the beta welcome modal if currentVersion.js says this isn't a release build
+  // Set up the beta welcome modal
   const [betaIsVisible, setBetaIsVisible] = useState(false);
   const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
 
@@ -36,9 +36,9 @@ const App = () => {
 
   // Open the beta welcome modal. IMPORTANT: COMMENT OUT FOR RELEASE BUILDS
 
-  useEffect(() => {
+/*  useEffect(() => {
     modalOpened();
-  }, []);
+  }, []); */
 
   // get now/next data from useCurrentShowData() and useNextShowData(), and remaining day's schedule from useScheduleData()
   const currentShowData = useCurrentShowData();

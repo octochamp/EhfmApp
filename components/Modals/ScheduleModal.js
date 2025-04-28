@@ -44,7 +44,7 @@ const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
                     <Text style={styles.modalH1}>{formattedDate}</Text>
                     <Text style={styles.modalH1Light}>{dayOfWeek}</Text>
                     <ScrollView fadingEdgeLength={150}>
-                        
+
                         {/* <Text style={styles.modalSchedule}>Coming up...</Text> */}
                         {scheduleData.scheduleDataArray.map((scheduleItemData, i) => {
                             const listNumber = i;
@@ -57,18 +57,21 @@ const ScheduleModal = ({ scheduleData, residentsData, isVisible, onClose }) => {
                         }
                         )
                         }
-                        
+
                     </ScrollView>
+                    <View>
+                        <Text style={styles.modalSpacer}> </Text>
+                    </View>
                     <View style={{ width: '100%', alignItems: 'center' }}>
-                            <Pressable
-                                style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleLinkPress('https://www.ehfm.live/schedule/')}>
-                                {({ pressed }) => (
-                                    <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
-                                        Full schedule ↗️
-                                    </Text>
-                                )}
-                            </Pressable>
-                        </View>
+                        <Pressable
+                            style={({ pressed }) => [{ backgroundColor: pressed ? 'white' : 'rgb(0,179,152)' }, styles.button]} onPress={() => handleLinkPress('https://www.ehfm.live/schedule/')}>
+                            {({ pressed }) => (
+                                <Text style={[{ color: pressed ? 'rgb(0,179,152)' : 'white' }, styles.buttonText]}>
+                                    Full schedule ↗️
+                                </Text>
+                            )}
+                        </Pressable>
+                    </View>
                 </View>
             </View>
         </RNModal>

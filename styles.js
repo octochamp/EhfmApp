@@ -201,13 +201,19 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '800',
         color: 'rgb(0,0,0)',
-        lineHeight: 40,
+        lineHeight: 24,
+    },
+    modalSpacer: {
+        fontSize: 20,
+        fontWeight: '800',
+        color: 'rgb(0,0,0)',
+        lineHeight: 14,
     },
     modalScheduleTime: {
         fontSize: 20,
         fontWeight: '200',
         color: 'rgb(0,0,0)',
-        lineHeight: 40,
+        lineHeight: 24,
     },
     modalBody: {
         fontSize: 16,
