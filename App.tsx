@@ -11,12 +11,15 @@ import ShowImage from './components/ShowImage';
 import usePrismicData from './hooks/usePrismicData';
 import useCurrentShowData from './hooks/useCurrentShowData';
 import useNextShowData from './hooks/useNextShowData';
+import useScheduleData from './hooks/useScheduleData';
 import ShowImageUrl from './components/ShowImageUrl';
 import BetaModal from './components/Modals/BetaModal';
 import currentVersion from './currentVersion';
 import { styles } from './styles';
+import { closeButton } from './assets/vectors/Vectors';
 
 const App = () => {
+
   // Set up the beta welcome modal if currentVersion.js says this isn't a release build
   const [betaIsVisible, setBetaIsVisible] = useState(false);
   const [modalBackgroundIsVisible, setModalBackgroundIsVisible] = useState(false);
@@ -31,17 +34,16 @@ const App = () => {
     setBetaIsVisible(false);
   };
 
-  if (currentVersion()[1] !== "release") {
+  // Open the beta welcome modal. IMPORTANT: COMMENT OUT FOR RELEASE BUILDS
 
-    // Open the beta welcome modal
-    useEffect(() => {
-      modalOpened();
-    }, []);
-  };
+  useEffect(() => {
+    modalOpened();
+  }, []);
 
-  // get show data from useCurrentShowData() and useNextShowData()
+  // get now/next data from useCurrentShowData() and useNextShowData(), and remaining day's schedule from useScheduleData()
   const currentShowData = useCurrentShowData();
   const nextShowData = useNextShowData();
+  const scheduleData = useScheduleData();
   const { aboutPageData, supportPageData, residentsData, carouselData } =
     usePrismicData();
 
@@ -108,7 +110,7 @@ const App = () => {
               </View>
               {menuVisible && (
                 <Animated.View style={{ ...styles.menu, opacity: menuOpacity }}>
-                  <Menu />
+                  <Menu scheduleData={scheduleData} residentsData={residentsData} />
                 </Animated.View>
               )}
             </View>

@@ -56,10 +56,9 @@ export const styles = StyleSheet.create({
     menuItem: {
         fontSize: 18,
         fontWeight: '400',
-/*         Colour is determined by the pressed state of the pressable */
+        /*         Colour is determined by the pressed state of the pressable */
         /* color: 'rgba(255,255,255,1)', */
     },
-
 
     footerContainer: {
         flex: 1,
@@ -153,8 +152,8 @@ export const styles = StyleSheet.create({
 
     buttonText: {
         fontSize: 20,
+        fontWeight: '200',
     },
-
     modalContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -170,26 +169,52 @@ export const styles = StyleSheet.create({
     modalContent: {
         width: '80%',
         maxHeight: '80%',
-        padding: 20,
-        backgroundColor: 'rgba(255,255,255,0.9)',
+        minHeight: '30%',
+        padding: 30,
+        backgroundColor: 'rgba(255,255,255,0.96)',
+        borderRadius: 10,
+        flexShrink: 1,
+        flexGrow: 0,
     },
     modalH1: {
-        fontSize: 28,
+        fontSize: 32,
+        fontWeight: '800',
         color: 'rgb(0,179,152)',
         paddingVertical: '2%',
-        lineHeight: 34,
+        lineHeight: 38,
+    },
+    modalH1Light: {
+        fontSize: 32,
+        fontWeight: '200',
+        color: 'rgb(0,179,152)',
+        paddingVertical: '2%',
+        lineHeight: 38,
     },
     modalH2: {
-        fontSize: 20,
+        fontSize: 24,
+        fontWeight: '400',
         color: 'rgb(0,179,152)',
         paddingVertical: '2%',
-        lineHeight: 24,
+        lineHeight: 30,
+    },
+    modalSchedule: {
+        fontSize: 20,
+        fontWeight: '800',
+        color: 'rgb(0,0,0)',
+        lineHeight: 40,
+    },
+    modalScheduleTime: {
+        fontSize: 20,
+        fontWeight: '200',
+        color: 'rgb(0,0,0)',
+        lineHeight: 40,
     },
     modalBody: {
-        fontSize: 14,
+        fontSize: 16,
+        fontWeight: '200',
         color: 'black',
         paddingVertical: '2%',
-        lineHeight: 20,
+        lineHeight: 24,
     },
     modalSub: {
         fontSize: 10,
@@ -203,9 +228,13 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: '4%',
-        color: 'black',
+        position: 'absolute',
+        top: -15,
+        right: -10,
     },
     modalButtonText: {
-        color: 'rgb(0,0,0)',
+        fontSize: 20,
+        color: 'rgb(0,179,152)',
+        fontWeight: '900',
     }
 })
