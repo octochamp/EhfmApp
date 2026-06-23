@@ -21,7 +21,7 @@ const AboutModal = ({ isVisible, onClose }) => {
                         <Text style={styles.modalH2}>EHFM is an online community radio station for Edinburgh.</Text>
                         <Text style={styles.modalBody}>Founded in 2018, EHFM was set up as a digital platform for local creative souls to express themselves. Since then, we’ve built up a loving community of presenters and volunteers who allow us to broadcast 24 hours a day, seven days a week.</Text>
                         <Text style={styles.modalBody}>Our programming approach is broad. We’ll play anything from club to Scottish traditional music; spoken word to panel discussions. </Text>
-                        <Text style={styles.modalBody}>For six years EHFM broadcast from multi-arts venue Summerhall, until recently moving to a new purpose-built studio space housed within our new Leith-based cafe, Ground Floor. All proceeds from the cafe go towards powering our radio station.</Text>
+                        <Text style={styles.modalBody}>Our studio is located within our café Ground Floor, based in Leith. All proceeds from the café go towards powering our radio station.</Text>
                         <Text style={styles.modalBody}></Text>
                     </ScrollView>
                 </View>
